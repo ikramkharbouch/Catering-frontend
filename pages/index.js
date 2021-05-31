@@ -11,7 +11,7 @@ export default function Home() {
       <h1 className="text-2xl lg:mt-12 font-bold">Manage your catering service in a better way</h1>
       <p className="mt-5 lg:w-4/6">With our platform you can manage all your services, orders, providers and more.</p>
       <div className="mt-5 text-white">
-        <Link href="/login"><Button name="Login" classnames="mr-0"/></Link>
+        <Link href="/login"><a><Button name="Login" classnames="mr-0 text-white"/></a></Link>
       </div>
     </div>
     </div>
