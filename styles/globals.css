@@ -18,7 +18,7 @@
     font-size: 9px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
     .card {
         width: 80%;
     }
