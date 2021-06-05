@@ -5,11 +5,11 @@ const dashboard = () => {
     const List = [
         {
             id: 1,
-            title: 'Utilisateur',
+            title: 'Utilisateurs',
             subtitle: 'Ajouter un utilisateur',
             image: '../home-images/catalogue.jpg',
             btn: 'Continuer',
-            link: 'addUser'
+            link: 'routes/subroutes/addUser'
         },
         {
             id: 2,
@@ -17,7 +17,7 @@ const dashboard = () => {
             subtitle: 'Lister et gérer les utilisateurs',
             image: '../home-images/utilisateurs.png',
             btn: 'Continuer',
-            link: 'getUsers'
+            link: 'routes/subroutes/getUsers'
         }
     ]
     return ( <> 
