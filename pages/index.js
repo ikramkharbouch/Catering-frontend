@@ -10,42 +10,42 @@ export default function Home() {
       id: 1,      
       title: 'Gestion des tâches',
       subtitle: 'Gérer les utilisateurs',
-      image: '',
+      image: 'home-images/dashboard.jpg',
       btn: 'Continuer'
     },
     {
       id: 2,
       title: 'Fiche du patient',
       subtitle: 'Gérer les patients',
-      image: '',
+      image: 'home-images/patient.jpg',
       btn: 'Continuer'
     },
     {
       id: 3,
       title: 'Commande des repas',
       subtitle: 'Lancer et gérer la commande',
-      image: '',
+      image: 'home-images/repas.jpg',
       btn: 'Continuer'
     },
     {
       id: 4,
       title: 'Gestion des approvisionnement',
       subtitle: 'Gérer les fournisseurs, commander des produits et gérer le stock',
-      image: '',
+      image: 'home-images/stock.jpg',
       btn: 'Continuer'
     },
     {
       id: 5,
       title: 'Liste des traitements',
       subtitle: 'Gérer les retours',
-      image: '',
+      image: 'home-images/recycle.jpg',
       btn: 'Continuer'
     },
     {
       id: 6,
       title: 'Règle d\'hygiène',
       subtitle: 'Les meilleurs pratiques',
-      image: '',
+      image: 'home-images/supply.jpg',
       btn: 'Continuer'
     },
   ]
