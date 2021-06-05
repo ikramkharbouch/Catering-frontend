@@ -11,42 +11,48 @@ export default function Home() {
       title: 'Gestion des tâches',
       subtitle: 'Gérer les utilisateurs',
       image: 'home-images/dashboard.jpg',
-      btn: 'Continuer'
+      btn: 'Continuer',
+      link: 'dashboard'
     },
     {
       id: 2,
       title: 'Fiche du patient',
       subtitle: 'Gérer les patients',
       image: 'home-images/patient.jpg',
-      btn: 'Continuer'
+      btn: 'Continuer',
+      link: 'patient'
     },
     {
       id: 3,
       title: 'Commande des repas',
       subtitle: 'Lancer et gérer la commande',
       image: 'home-images/repas.jpg',
-      btn: 'Continuer'
+      btn: 'Continuer',
+      link: 'meal'
     },
     {
       id: 4,
       title: 'Gestion des approvisionnement',
       subtitle: 'Gérer les fournisseurs, commander des produits et gérer le stock',
       image: 'home-images/stock.jpg',
-      btn: 'Continuer'
+      btn: 'Continuer',
+      link: 'stock'
     },
     {
       id: 5,
       title: 'Liste des traitements',
       subtitle: 'Gérer les retours',
       image: 'home-images/recycle.jpg',
-      btn: 'Continuer'
+      btn: 'Continuer',
+      link: 'recycle'
     },
     {
       id: 6,
       title: 'Règle d\'hygiène',
       subtitle: 'Les meilleurs pratiques',
       image: 'home-images/supply.jpg',
-      btn: 'Continuer'
+      btn: 'Continuer',
+      link: 'supply'
     },
   ]
 
@@ -74,7 +80,7 @@ export default function Home() {
             <h1 className="text-center text-2xl font-bold text-green-500 mt-10">Dashboard</h1>
             <div className="flex flex-wrap mx-auto flex-col lg:flex-row w-full mt-10">
             {HomeComponents.map((component) => (
-					<NavCard title={component.title} subtitle={component.subtitle} image={component.image} btn={component.btn} id={component.id} key={component.id}/>
+					<NavCard title={component.title} subtitle={component.subtitle} image={component.image} btn={component.btn} id={component.id} key={component.id} link={component.link}/>
 				))}
             </div>
         </>}
