@@ -77,7 +77,7 @@ export default function Home() {
       </div>
       </>)}
       {isAuthenticated && <>
-            <h1 className="text-center text-2xl font-bold text-green-500 mt-10">Dashboard</h1>
+            <h1 className="text-center text-5xl font-bold text-green-500 mt-10">Dashboard</h1>
             <div className="flex flex-wrap mx-auto flex-col lg:flex-row w-full mt-10">
             {HomeComponents.map((component) => (
 					<NavCard title={component.title} subtitle={component.subtitle} image={component.image} btn={component.btn} id={component.id} key={component.id} link={component.link}/>

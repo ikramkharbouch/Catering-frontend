@@ -1,8 +1,4 @@
 /* ./styles/globals.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 .card {
     display: flex;
     flex-direction: column;
