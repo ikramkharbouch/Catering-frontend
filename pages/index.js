@@ -12,7 +12,7 @@ export default function Home() {
       subtitle: 'Gérer les utilisateurs',
       image: 'home-images/dashboard.jpg',
       btn: 'Continuer',
-      link: 'dashboard'
+      link: 'routes/dashboard'
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ export default function Home() {
       subtitle: 'Gérer les patients',
       image: 'home-images/patient.jpg',
       btn: 'Continuer',
-      link: 'patient'
+      link: 'routes/patient'
     },
     {
       id: 3,
@@ -28,7 +28,7 @@ export default function Home() {
       subtitle: 'Lancer et gérer la commande',
       image: 'home-images/repas.jpg',
       btn: 'Continuer',
-      link: 'meal'
+      link: 'routes/meal'
     },
     {
       id: 4,
@@ -36,7 +36,7 @@ export default function Home() {
       subtitle: 'Gérer les fournisseurs, commander des produits et gérer le stock',
       image: 'home-images/stock.jpg',
       btn: 'Continuer',
-      link: 'stock'
+      link: 'routes/stock'
     },
     {
       id: 5,
@@ -44,7 +44,7 @@ export default function Home() {
       subtitle: 'Gérer les retours',
       image: 'home-images/recycle.jpg',
       btn: 'Continuer',
-      link: 'recycle'
+      link: 'routes/recycle'
     },
     {
       id: 6,
@@ -52,7 +52,7 @@ export default function Home() {
       subtitle: 'Les meilleurs pratiques',
       image: 'home-images/supply.jpg',
       btn: 'Continuer',
-      link: 'supply'
+      link: 'routes/supply'
     },
   ]
 
