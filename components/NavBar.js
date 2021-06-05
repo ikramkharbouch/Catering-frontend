@@ -3,6 +3,7 @@ import Button from '../components/Button'
 import { useState } from 'react';
 
 const Navbar = () => {
+  // To improve the way to check if the user is connected later
   const [active, setActive] = useState(false);
 
   const handleClick = () => {
