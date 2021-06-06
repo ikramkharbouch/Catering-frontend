@@ -44,7 +44,7 @@ export default function Home() {
       subtitle: 'Gérer les retours',
       image: 'home-images/recycle.jpg',
       btn: 'Continuer',
-      link: 'routes/recycle'
+      link: 'routes/return'
     },
     {
       id: 6,
@@ -52,7 +52,7 @@ export default function Home() {
       subtitle: 'Les meilleurs pratiques',
       image: 'home-images/supply.jpg',
       btn: 'Continuer',
-      link: 'routes/supply'
+      link: 'hygiene'
     },
   ]
 

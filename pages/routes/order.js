@@ -21,7 +21,7 @@ const order = () => {
         }
     ]
     return ( <> 
-        <h1 className="text-center text-5xl font-bold text-green-500 mt-10">Utilisateurs</h1>
+        <h1 className="text-center text-5xl font-bold text-green-500 mt-10">Ordres</h1>
             <div className="flex flex-wrap mx-auto flex-col lg:flex-row w-full mt-10">
             {List.map((item) => (
 					<NavCard title={item.title} subtitle={item.subtitle} image={item.image} btn={item.btn} id={item.id} key={item.id} link={item.link}/>
