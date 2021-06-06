@@ -28,7 +28,7 @@ export default function Home() {
       subtitle: 'Lancer et gérer la commande',
       image: 'home-images/repas.jpg',
       btn: 'Continuer',
-      link: 'routes/meal'
+      link: 'routes/order'
     },
     {
       id: 4,
