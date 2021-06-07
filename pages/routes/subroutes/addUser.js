@@ -16,7 +16,7 @@ const addUser = () => {
             <h1 className="text-2xl font-bold">Ajouter un utilisateur</h1>
             <form onSubmit={login} className="flex flex-col mx-auto">
             <label className="text-green-500 font-bold text-sm mt-4">Nom Complet</label>
-                <input type="text" value={email} onChange={e => {setName(e.target.value)}} placeholder="Entrez votre addresse e-mail" className="border border-green-500 px-2 py-4 rounded-md mt-4"/>
+                <input type="text" value={name} onChange={e => {setName(e.target.value)}} placeholder="Entrez votre addresse e-mail" className="border border-green-500 px-2 py-4 rounded-md mt-4"/>
                 <label className="text-green-500 font-bold text-sm mt-4">Addresse e-mail:</label>
                 <input type="text" value={email} onChange={e => {setEmail(e.target.value)}} placeholder="Entrez votre addresse e-mail" className="border border-green-500 px-2 py-4 rounded-md mt-4"/>
                 <label className="text-green-500 font-bold text-sm mt-4">Mot de passe:</label>
