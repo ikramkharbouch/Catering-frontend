@@ -49,7 +49,8 @@ const info = [
 
     return ( 
         <>
-            <div className="flex flex-wrap mx-auto flex-col lg:flex-row w-full">
+		 	<h1 className="text-center text-5xl font-bold text-green-500 mt-10">Règle d'hygiène</h1>
+            <div className="grid gap-2 grid-cols-1 mt-10 mx-auto lg:w-4/5 md:grid-cols-1 lg:grid-cols-2">
             {info.map((card) => (
 					<Card image={card.image} title={card.title} text={card.text} id={card.id} key={card.id}/>
 				))}

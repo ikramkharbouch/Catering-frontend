@@ -56,7 +56,7 @@ export default function Home() {
     },
   ]
 
-  const [isAuthenticated, SetIsAuthenticated] = useState(false);
+  const [isAuthenticated, SetIsAuthenticated] = useState(true);
 
   useEffect(() => {
     // Make a fetch request to the server to check if the user is authenticated or no
@@ -78,7 +78,9 @@ export default function Home() {
       </>)}
       {isAuthenticated && <>
             <h1 className="text-center text-5xl font-bold text-green-500 mt-10">Dashboard</h1>
-            <div className="flex flex-wrap mx-auto flex-col lg:flex-row w-full mt-10">
+            {/**/}
+            {/* <div className="flex flex-wrap mx-auto flex-col lg:flex-row w-full mt-10 ml-10"> */}
+            <div className="grid gap-2 grid-cols-1 mt-10 w-full lg:w-4/5 mx-auto md:grid-cols-1 lg:grid-cols-3">
             {HomeComponents.map((component) => (
 					<NavCard title={component.title} subtitle={component.subtitle} image={component.image} btn={component.btn} id={component.id} key={component.id} link={component.link}/>
 				))}

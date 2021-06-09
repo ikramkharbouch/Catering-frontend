@@ -62,7 +62,7 @@ const stock = () => {
     ]
     return ( <> 
         <h1 className="text-center text-5xl font-bold text-green-500 mt-10">Stock</h1>
-            <div className="flex flex-wrap mx-auto flex-col lg:flex-row w-full mt-10">
+        <div className="grid gap-2 grid-cols-1 mt-10 mx-auto lg:w-4/5 md:grid-cols-1 lg:grid-cols-3">
             {List.map((item) => (
 					<NavCard title={item.title} subtitle={item.subtitle} image={item.image} btn={item.btn} id={item.id} key={item.id} link={item.link}/>
 				))}
