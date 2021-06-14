@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 
 const addPatient = () => {
-  const [iss, setIss] = useState("");
+  const [ipp, setIpp] = useState("");
   const [name, setName] = useState("");
   const [roomNumber, setRoomNumber] = useState("");
   const [gender, setGender] = useState("");
@@ -24,9 +24,9 @@ const addPatient = () => {
         </label>
         <input
           type="text"
-          value={iss}
+          value={ipp}
           onChange={(e) => {
-            setIss(e.target.value);
+            setIpp(e.target.value);
           }}
           placeholder="Entrez votre addresse e-mail"
           className="border border-green-500 px-2 py-4 rounded-md mt-4"

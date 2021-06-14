@@ -23,8 +23,20 @@
     font-size: 9px;
 }
 
+.round-table {
+    border-radius: 10px;
+}
+
 .grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 2fr));
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
 }
 
 @media only screen and (max-width: 768px) {

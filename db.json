@@ -1,0 +1,95 @@
+{
+  "fakeInfo": [
+    {
+      "id": 1,
+      "name": "Kawtar Retmi",
+      "email": "something@something.fr",
+      "role": "Admin"
+    },
+    {
+      "id": 2,
+      "name": "Imane alaoui",
+      "email": "something@something.fr",
+      "role": "Fournisseur"
+    },
+    {
+      "id": 3,
+      "name": "Rania alami",
+      "email": "something@something.fr",
+      "role": "Fournisseur"
+    },
+    {
+      "id": 4,
+      "name": "Ikram Kharbouch",
+      "email": "something@something.fr",
+      "role": "Fournisseur"
+    }
+  ],
+  "Patients": [
+    {
+      "IPP": 1,
+      "name": "Ikram Kharbouch",
+      "sex": "Female",
+      "birthdate": "01/02/1998",
+      "rnum": 4,
+      "sojourn": "Court séjour",
+      "hospitalization": "Gastro",
+      "entryDate": "01/05/2021"
+    },
+    {
+      "IPP": 2,
+      "name": "Imane alaoui",
+      "sex": "Female",
+      "birthdate": "01/02/1996",
+      "rnum": 4,
+      "sojourn": "Court séjour",
+      "hospitalization": "Gastro",
+      "entryDate": "01/06/2021"
+    }
+  ],
+  "Orders": [
+    {
+      "hospitalization": "Cardiologie",
+      "meal": "Dîner"
+    }
+  ],
+  "Suppliers": [
+    {
+      "CI": "TR74626",
+      "society": "MediEquip",
+      "identifier": "Mehdi El Kamouni",
+      "contact": "06758945362",
+      "category": "Aliments",
+      "email": "test@test.fr",
+      "specification": "Food"
+    },
+    {
+      "CI": "TR74626",
+      "society": "MediEquip",
+      "identifier": "Mehdi El Kamouni",
+      "contact": "06758945362",
+      "email": "test@test.fr",
+      "category": "Aliments",
+      "specification": "Food"
+    },
+    {
+      "CI": "TR74626",
+      "society": "MediEquip",
+      "identifier": "Mehdi El Kamouni",
+      "contact": "06758945362",
+      "email": "test@test.fr",
+      "category": "Aliments",
+      "specification": "Food"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
