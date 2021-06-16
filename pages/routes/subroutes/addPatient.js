@@ -10,13 +10,18 @@ const addPatient = () => {
   const [service, setService] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [loginDate, setLoginDate] = useState("");
-  
-  // We are gonna work with a modal box
+  const [onssa, setOnssa] = useState(false);
+  const [iso, setIso] = useState(false);
+  const [quality, setQuality] = useState(false);
+  const [delay, setDelay] = useState(false);
+  const [conditioning, setConditioning] = useState(false);
+  const [temperature, setTemperature] = useState(false);
 
   const login = (e) => {
     e.preventDefault();
     // Fetch the api
   };
+
 
   return (
     <div className="mx-auto w-3/4 mt-10">
