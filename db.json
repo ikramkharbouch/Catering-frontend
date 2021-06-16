@@ -102,6 +102,19 @@
       "temper": 1
     }
   ],
+  "Stock": [
+    {
+      "id": 1,
+      "label": "data",
+      "productName": "data",
+      "supplier": "data",
+      "price": "data",
+      "quantity": "data",
+      "status": "data",
+      "entryDate": "data",
+      "expireDate": "data"
+    }
+  ],
   "comments": [
     {
       "id": 1,
