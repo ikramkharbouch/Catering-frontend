@@ -3,16 +3,9 @@ const manageSuppliers = ({Suppliers}) => {
         <div className="mx-auto w-full">
         <div className="w-3/4 mx-auto">
           <h1 className="text-center text-5xl font-bold text-green-500 mt-10">
-            Liste des ordres
+            Liste des fournisseurs
           </h1>
-          <input
-            type="text"
-            onChange={(e) => {
-              setOrder(e.target.value);
-            }}
-            placeholder="Search"
-            className="border border-green-500 px-2 py-4 rounded-md mt-10 w-full"
-          />
+          
         </div>
       </div>
       <div className="overflow-x-auto mx-auto w-3/4 text-base font-light mt-10 text-left">

@@ -1,7 +1,154 @@
+import { React, useState } from "react";
+import ModalBox from "../../../components/ModalBox";
+
 const addSupplier = () => {
-    return ( <> 
-        <h1>This is addSupplier Page</h1>
-    </> );
-}
- 
+  const [identifier, setIdentifier] = useState("");
+  const [society, setSociety] = useState("");
+  const [name, setName] = useState("");
+  const [contact, setContact] = useState("");
+  const [email, setEmail] = useState("");
+  const [category, setCategory] = useState("");
+  const [specification, setSpecification] = useState("");
+  const [modal, setModal] = useState(false);
+
+  const submitInfo = () => {};
+
+  const handleClick = () => {
+    console.log("clicked");
+    setModal(true);
+  };
+
+  const handleClose = () => {
+    setModal(false);
+  }
+
+  return (
+    <>
+        {modal && <ModalBox classnames="visible" modal={modal} handleClose={handleClose}/>}
+        <div className="mx-auto w-3/4 mt-10 z-0">
+          <h1 className="text-2xl font-bold">Ajouter un fournisseur</h1>
+          <form onSubmit={submitInfo} className="flex flex-col m-20">
+            <label className="text-green-500 font-bold text-sm mt-4">
+              Identifiant Commercial
+            </label>
+            <input
+              type="text"
+              value={identifier}
+              onChange={(e) => {
+                setIdentifier(e.target.value);
+              }}
+              placeholder="Entrez votre addresse e-mail"
+              className="border border-green-500 px-2 py-4 rounded-md mt-4"
+            />
+            <label className="text-green-500 font-bold text-sm mt-4">
+              Société:
+            </label>
+            <input
+              type="text"
+              value={society}
+              onChange={(e) => {
+                setSociety(e.target.value);
+              }}
+              placeholder="Nom de la société"
+              className="border border-green-500 px-2 py-4 rounded-md mt-4"
+            />
+            <label className="text-green-500 font-bold text-sm mt-4">
+              Nom du représentant:
+            </label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              placeholder="Nom du représentant"
+              className="border border-green-500 px-2 py-4 rounded-md mt-4"
+            />
+            <label className="text-green-500 font-bold text-sm mt-4">
+              Contact:
+            </label>
+            <input
+              type="text"
+              value={contact}
+              onChange={(e) => {
+                setContact(e.target.value);
+              }}
+              placeholder="Contact"
+              className="border border-green-500 px-2 py-4 rounded-md mt-4"
+            />
+            <label className="text-green-500 font-bold text-sm mt-4">
+              Addresse e-mail:
+            </label>
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              placeholder="addresse e-mail"
+              className="border border-green-500 px-2 py-4 rounded-md mt-4"
+            />
+            <label className="text-green-500 font-bold text-sm mt-4">
+              Catégorie:
+            </label>
+            <select
+              value={category}
+              onChange={(e) => {
+                setCategory(e.target.value);
+              }}
+              className="border border-green-500 px-2 py-4 rounded-md mt-4"
+            >
+              <option value="Admin">Catégorie</option>
+              <option value="Aide soignant">Aide soignant</option>
+              <option value="Agent restauration">Agent restauration</option>
+              <option value="Responsable approvisionnement">
+                Responsable approvisionnement
+              </option>
+              <option value="None">None</option>
+            </select>
+            <label className="text-green-500 font-bold text-sm mt-4">
+              Spécification:
+            </label>
+            <input
+              type="text"
+              value={specification}
+              onChange={(e) => {
+                setSpecification(e.target.value);
+              }}
+              placeholder="Spécification"
+              className="border border-green-500 px-2 py-4 rounded-md mt-4"
+            />
+            <div className="flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 mt-5"
+                viewBox="0 0 20 20"
+                fill="#1F2937"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <p
+                className="font-regular text-green-500 text-sm mt-5 ml-2"
+                onClick={handleClick}
+              >
+                Add Criteria
+              </p>
+            </div>
+
+            <button
+              type="submit"
+              className="bg-green-500 px-2 py-4 rounded-md mt-4 text-white font-bold"
+            >
+              Enregister
+            </button>
+          </form>
+        </div>
+    </>
+  );
+};
+
 export default addSupplier;

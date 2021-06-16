@@ -1,14 +1,17 @@
 import { React, useState } from "react";
+import Button from '../../../components/Button'
 
 const addPatient = () => {
   const [ipp, setIpp] = useState("");
-  const [name, setName] = useState("");
+  const [fullName, setfullName] = useState("");
   const [roomNumber, setRoomNumber] = useState("");
   const [gender, setGender] = useState("");
   const [sojourn, setSojourn] = useState("");
-  const [hospitalizationType, setHospitalizationType] = useState("");
+  const [service, setService] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [loginDate, setLoginDate] = useState("");
+  
+  // We are gonna work with a modal box
 
   const login = (e) => {
     e.preventDefault();
@@ -36,11 +39,11 @@ const addPatient = () => {
         </label>
         <input
           type="text"
-          value={name}
+          value={fullName}
           onChange={(e) => {
-            setName(e.target.value);
+            setfullName(e.target.value);
           }}
-          placeholder="Entrez votre addresse e-mail"
+          placeholder="Entrez votre nom et prénom"
           className="border border-green-500 px-2 py-4 rounded-md mt-4"
         />
         <label className="text-green-500 font-bold text-sm mt-4">
@@ -52,7 +55,7 @@ const addPatient = () => {
           onChange={(e) => {
             setRoomNumber(e.target.value);
           }}
-          placeholder="Entrez votre addresse e-mail"
+          placeholder="Entrez votre Numéro de chambre"
           className="border border-green-500 px-2 py-4 rounded-md mt-4"
         />
         <label className="text-green-500 font-bold text-sm mt-4">Sexe:</label>
@@ -84,9 +87,9 @@ const addPatient = () => {
           Service d'hospitalisation:
         </label>
         <select
-          value={hospitalizationType}
+          value={service}
           onChange={(e) => {
-            setHospitalizationType(e.target.value);
+            setService(e.target.value);
           }}
           className="border border-green-500 px-2 py-4 rounded-md mt-4"
         >
@@ -120,6 +123,52 @@ const addPatient = () => {
           }}
           className="border border-green-500 px-2 py-4 rounded-md mt-4"
         />
+        <label className="text-green-500 font-bold text-sm mt-4">
+            Particularité alimentaire
+        </label>
+        <div className="mt-4">
+        <input type="checkbox" id="salt" name="salt"
+             />
+        <label for="salt" className="ml-2">Salt</label>
+        </div>
+        <div className="mt-4">
+        <input type="checkbox" id="sugar" name="sugar" class="checked:bg-green-600 checked:border-transparent"
+               />
+        <label for="sugar" className="ml-2">Sugar</label>
+        </div>
+        <label className="text-green-500 font-bold text-sm mt-4">
+            Les allergies
+        </label>
+        <div className="mt-4">
+        <input type="checkbox" id="eggs" name="eggs"
+             />
+        <label for="eggs" className="ml-2">Eggs</label>
+        </div>
+        <div className="mt-4">
+        <input type="checkbox" id="milk" name="milk"
+             />
+        <label for="milk" className="ml-2">Milk</label>
+        </div>
+        <div className="mt-4">
+        <input type="checkbox" id="seafood" name="seafood"
+             />
+        <label for="seafood" className="ml-2">Seafood</label>
+        </div>
+        <div className="mt-4">
+        <input type="checkbox" id="grain" name="grain"
+             />
+        <label for="grain" className="ml-2">Grain</label>
+        </div>
+        <div className="mt-4">
+        <input type="checkbox" id="nuts" name="nuts"
+             />
+        <label for="nuts" className="ml-2">Nuts</label>
+        </div>
+        <div className="mt-4">
+        <input type="checkbox" id="fruits" name="fruits"
+             />
+        <label for="fruits" className="ml-2">Fruits</label>
+        </div>
         <button
           type="submit"
           className="bg-green-500 px-2 py-4 rounded-md mt-4 text-white font-bold"

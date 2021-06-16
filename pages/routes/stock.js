@@ -19,16 +19,16 @@ const stock = () => {
             btn: 'Continuer',
             link: 'routes/subroutes/manageSuppliers'
         },
+        // {
+        //     id: 3,
+        //     title: 'Critères des fournisseurs',
+        //     subtitle: 'Gérer les critères des fournisseurs',
+        //     image: '../home-images/utilisateurs.png',
+        //     btn: 'Continuer',
+        //     link: 'routes/subroutes/suppliersCriteria'
+        // },
         {
             id: 3,
-            title: 'Critères des fournisseurs',
-            subtitle: 'Gérer les critères des fournisseurs',
-            image: '../home-images/utilisateurs.png',
-            btn: 'Continuer',
-            link: 'routes/subroutes/suppliersCriteria'
-        },
-        {
-            id: 4,
             title: 'Enregistement des produits',
             subtitle: 'Ajouter des produits au stock',
             image: '../home-images/utilisateurs.png',
@@ -36,7 +36,7 @@ const stock = () => {
             link: 'routes/subroutes/addProduct'
         },
         {
-            id: 5,
+            id: 4,
             title: 'Stock',
             subtitle: 'Gérer le stock',
             image: '../home-images/utilisateurs.png',
@@ -44,7 +44,7 @@ const stock = () => {
             link: 'routes/subroutes/manageStock'
         },
         {
-            id: 6,
+            id: 5,
             title: 'Commander des produits',
             subtitle: 'Commander des produits pour le stock',
             image: '../home-images/utilisateurs.png',
@@ -52,7 +52,7 @@ const stock = () => {
             link: 'routes/subroutes/orderProduct'
         },
         {
-            id: 7,
+            id: 6,
             title: 'Produits',
             subtitle: 'Lister et gérer les produits commandées pour le stock',
             image: '../home-images/utilisateurs.png',

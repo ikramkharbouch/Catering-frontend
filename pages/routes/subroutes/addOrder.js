@@ -12,7 +12,7 @@ const addOrder = () => {
 
   return (
     <div className="mx-auto w-3/4 mt-10">
-      <h1 className="text-2xl font-bold">Ajouter un utilisateur</h1>
+      <h1 className="text-2xl font-bold">Lancer une commande</h1>
       <form onSubmit={login} className="flex flex-col mx-auto">
       <label className="text-green-500 font-bold text-sm mt-4">
           Service d'hospitalisation:
