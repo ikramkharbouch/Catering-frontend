@@ -1,5 +1,4 @@
 const ModalBox = ({ classnames, modal, handleClose, Form }) => {
-  const handleSubmit = () => {};
 
   return (
     <>

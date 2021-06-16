@@ -82,6 +82,26 @@
       "specification": "Food"
     }
   ],
+  "Criteria": [
+    {
+      "id": 1,
+      "onssa": 1,
+      "iso": 1,
+      "quality": 1,
+      "delay": -1,
+      "conditioning": 1,
+      "temper": 1
+    },
+    {
+      "id": -1,
+      "onssa": 1,
+      "iso": -1,
+      "quality": 1,
+      "delay": -1,
+      "conditioning": 1,
+      "temper": 1
+    }
+  ],
   "comments": [
     {
       "id": 1,
