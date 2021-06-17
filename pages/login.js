@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useRouter } from "next/router"
 
+
+// This page shouldn't be accessed if the user is loggedIn
 const Login = () => {
     const router = useRouter();
   const [email, setEmail] = useState("");
