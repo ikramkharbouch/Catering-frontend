@@ -1,6 +1,7 @@
 import NavCard from '../../components/NavCard'
+import withAuth from '../Auth/withAuth'
 
-const dashboard = () => {
+const users = () => {
 
     const List = [
         {
@@ -31,4 +32,4 @@ const dashboard = () => {
     </> );
 }
  
-export default dashboard;
+export default withAuth(users);

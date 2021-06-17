@@ -1,4 +1,5 @@
 import NavCard from '../../components/NavCard'
+import WithAuth from '../Auth/withAuth';
 
 const stock = () => {
 
@@ -70,4 +71,4 @@ const stock = () => {
     </> );
 }
  
-export default stock;
+export default WithAuth(stock);

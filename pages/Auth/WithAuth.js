@@ -6,10 +6,10 @@ const WithAuth = (WrappedComponent) => {
             const Router = useRouter();
 
             // We will verify that the user is authenticated here
-            const verification = true;
+            const verification = false;
 
             if (!verification) {
-                Router.replace("/");
+                Router.replace("/error");
                 return null;
             }
             return <WrappedComponent {...props} />
