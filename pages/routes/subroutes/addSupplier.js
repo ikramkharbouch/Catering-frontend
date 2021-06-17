@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import ModalBox from "../../../components/ModalBox";
 import Button from "../../../components/Button";
+import withAuth from '../../Auth/withAuth';
 
 const addSupplier = () => {
   const [identifier, setIdentifier] = useState("");
@@ -284,4 +285,4 @@ const addSupplier = () => {
   );
 };
 
-export default addSupplier;
+export default withAuth(addSupplier);

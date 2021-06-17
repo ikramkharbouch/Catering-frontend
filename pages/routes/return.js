@@ -1,3 +1,5 @@
+import withAuth from '../Auth/withAuth';
+
 const recycle = ({ Returns }) => {
 
   const deleteData = () => {
@@ -100,4 +102,4 @@ export async function getStaticProps() {
   };
 }
 
-export default recycle;
+export default withAuth(recycle);

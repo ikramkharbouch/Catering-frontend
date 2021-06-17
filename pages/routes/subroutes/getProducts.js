@@ -1,3 +1,5 @@
+import withAuth from '../../Auth/withAuth';
+
 const getProducts = () => {
 
     const deleteData = () => {
@@ -10,4 +12,4 @@ const getProducts = () => {
     </> );
 }
  
-export default getProducts;
+export default withAuth(getProducts);

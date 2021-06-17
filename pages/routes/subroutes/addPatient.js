@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import Button from '../../../components/Button'
+import WithAuth from '../../Auth/withAuth';
 
 const addPatient = () => {
   const [ipp, setIpp] = useState("");
@@ -185,4 +185,4 @@ const addPatient = () => {
   );
 };
 
-export default addPatient;
+export default withAuth(addPatient);

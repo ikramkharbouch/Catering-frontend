@@ -1,4 +1,5 @@
 import Card from '../components/Card'
+import withAuth from './Auth/withAuth';
 
 const hygiene = () => {
 
@@ -59,4 +60,4 @@ const info = [
      );
 }
  
-export default hygiene;
+export default withAuth(hygiene);

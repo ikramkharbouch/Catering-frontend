@@ -1,3 +1,5 @@
+import withAuth from '../../Auth/withAuth';
+
 const getOrders = ({ Orders }) => {
   const deleteData = () => {
     // delete the data
@@ -77,4 +79,4 @@ export async function getStaticProps() {
   };
 }
 
-export default getOrders;
+export default withAuth(getOrders);

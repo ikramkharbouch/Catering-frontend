@@ -1,4 +1,5 @@
 import Mark from "../../../components/Mark";
+import withAuth from '../../Auth/withAuth';
 
 const suppliersCriteria = ({ Criteria }) => {
   // Put any states variables here
@@ -113,4 +114,4 @@ export async function getStaticProps() {
   };
 }
 
-export default suppliersCriteria;
+export default withAuth(suppliersCriteria);

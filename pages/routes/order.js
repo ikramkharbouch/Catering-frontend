@@ -1,4 +1,5 @@
 import NavCard from '../../components/NavCard'
+import withAuth from '../Auth/withAuth';
 
 const order = () => {
 
@@ -31,4 +32,4 @@ const order = () => {
     </> );
 }
  
-export default order;
+export default withAuth(order);

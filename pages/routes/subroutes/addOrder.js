@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import Success from "../../../components/Success"
+import withAuth from '../../Auth/withAuth';
 
 const addOrder = () => {
   const [hospitalizationType, setHospitalizationType] = useState("");
@@ -64,4 +65,4 @@ const addOrder = () => {
   );
 };
 
-export default addOrder;
+export default withAuth(addOrder);

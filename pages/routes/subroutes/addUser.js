@@ -1,4 +1,5 @@
 import { React, useState } from 'react'
+import withAuth from '../../Auth/withAuth';
 
 const addUser = () => {
     const [fullName, setfullName] = useState('');
@@ -48,4 +49,4 @@ const addUser = () => {
       );
 }
  
-export default addUser;
+export default withAuth(addUser);

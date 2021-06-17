@@ -1,4 +1,5 @@
 import { useState, react } from "react";
+import withAuth from '../../Auth/withAuth';
 
 const addProduct = () => {
 
@@ -158,4 +159,4 @@ const addProduct = () => {
     </> );
 }
  
-export default addProduct;
+export default withAuth(addProduct);

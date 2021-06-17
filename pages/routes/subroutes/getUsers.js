@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import withAuth from '../../Auth/withAuth';
 
 const getUsers = ({ fakeInfo }) => {
   const [order, setOrder] = useState("");
@@ -93,4 +94,4 @@ export async function getStaticProps() {
   };
 }
 
-export default getUsers;
+export default withAuth(getUsers);

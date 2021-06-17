@@ -5,11 +5,11 @@ import Dashboard from './Dashboard'
 
 export default function Home() {
 
-  const [isAuthenticated, SetIsAuthenticated] = useState(true);
+  const [isAuthenticated, SetIsAuthenticated] = useState(false);
 
   useEffect(() => {
     // Make a fetch request to the server to check if the user is authenticated or no
-    SetIsAuthenticated(true);
+    SetIsAuthenticated(false);
   }, [isAuthenticated])
 
 
@@ -20,7 +20,7 @@ export default function Home() {
         <h1 className="text-2xl lg:mt-12 font-bold">Manage your catering service in a better way</h1>
         <p className="mt-5 lg:w-4/6">With our platform you can manage all your services, orders, providers and more.</p>
         <div className="mt-5 text-white">
-          <Link href="/login"><a><Button name="Login" classnames="mr-0 text-white"/></a></Link>
+          <Link href="/login"><a><Button name="Login" classnames="bg-green-500 mr-0 text-white font-light"/></a></Link>
         </div>
       </div>
       </div>

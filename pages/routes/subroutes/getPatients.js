@@ -1,3 +1,6 @@
+import withAuth from '../../Auth/withAuth';
+
+
 const getPatients = ({ Patients }) => {
   const deleteData = () => {
     // delete the data
@@ -109,4 +112,4 @@ export async function getStaticProps() {
   };
 }
 
-export default getPatients;
+export default withAuth(getPatients);

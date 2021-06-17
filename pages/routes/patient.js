@@ -1,4 +1,5 @@
 import NavCard from '../../components/NavCard'
+import WithAuth from '../Auth/withAuth';
 
 const patient = () => {
 
@@ -30,4 +31,4 @@ const patient = () => {
     </> );
 }
  
-export default patient;
+export default withAuth(patient);
