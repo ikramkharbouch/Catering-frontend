@@ -15,6 +15,11 @@ const orderProduct = () => {
         // Fetch api here
     }
 
+    const deleteData = () => {
+      // delete the data
+      console.log("deleted");
+    };
+
     return ( <> 
         <div className="mx-auto w-3/4 mt-10">
         <h1 className="text-2xl font-bold">Ajouter un produit au stock</h1>
