@@ -2,12 +2,14 @@ import Link from "next/link";
 import Button from '../components/Button'
 import { useState } from 'react';
 
-const Navbar = () => {
+const Navbar = ({}) => {
+  // get active from localStorage
+
   // To improve the way to check if the user is connected later
-  const [active, setActive] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleClick = () => {
-    setActive(!active);
+    setLoggedIn(!loggedIn);
   };
 
   return (
@@ -40,29 +42,30 @@ const Navbar = () => {
           </svg>
         </button>
         {/*Note that in this div we will use a ternary operator to decide whether or not to display the content of the div  */}
-        <div
+        {/* <div
           className={`${
             active ? '' : 'hidden'
           }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
-        >
+        > */}
           <div className='lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto'>
             <Link href='/'>
               <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white '>
                 Home
               </a>
             </Link>
-            <Link href='/login'>
+            {!loggedIn && <Link href='/login'>
               <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white'>
-                Logout
+                Login
               </a>
-            </Link>
-            {!active && <Link href='/support'>
+            </Link>}
+            
+            {loggedIn && <Link href='/logout'>
               <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white'>
-                Support
+                logout
               </a>
             </Link>}
           </div>
-        </div>
+        {/* </div> */}
       </nav>
     </>
   );

@@ -9,7 +9,8 @@ export default function Home() {
 
   useEffect(() => {
     // Make a fetch request to the server to check if the user is authenticated or no
-    SetIsAuthenticated(false);
+    const isLogged = localStorage.getItem("isLogged")
+    SetIsAuthenticated(isLogged);
   }, [isAuthenticated])
 
 

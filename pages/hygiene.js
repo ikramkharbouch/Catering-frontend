@@ -6,7 +6,7 @@ const hygiene = () => {
 const info = [
 	{
         id: '1',
-		title: 'La chaîne du froid      entre 0 et 3°Celsius',
+		title: 'La chaîne du froid entre 0 et 3°Celsius',
 		text:
 			'doit être contrôlée en permanance et étalonnée à fréquence régulière.',
 		image: "images/cold.jpg",

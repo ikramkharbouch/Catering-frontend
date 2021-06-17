@@ -6,7 +6,7 @@ const WithAuth = (WrappedComponent) => {
             const Router = useRouter();
 
             // We will verify that the user is authenticated here
-            const verification = false;
+            const verification = localStorage.getItem("isLogged");
 
             if (!verification) {
                 Router.replace("/error");
