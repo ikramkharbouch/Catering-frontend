@@ -121,6 +121,32 @@
       "expireDate": "data"
     }
   ],
+  "StockProducts": [
+    {
+      "id": 1,
+      "ref": "data",
+      "category": "data",
+      "unity": "data",
+      "designation": "data",
+      "securityStock": "data",
+      "actualStock": "data",
+      "status": "data",
+      "entryDate": "data",
+      "expireDate": "data"
+    },
+    {
+      "id": 2,
+      "ref": "data",
+      "category": "data",
+      "unity": "data",
+      "designation": "data",
+      "securityStock": "data",
+      "actualStock": "data",
+      "status": "data",
+      "entryDate": "data",
+      "expireDate": "data"
+    }
+  ],
   "Returns": [
     {
       "id": 1,

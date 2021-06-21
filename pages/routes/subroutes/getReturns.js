@@ -1,17 +1,11 @@
-import withAuth from "../../Auth/withAuth";
-
-const manageStock = ({ StockProducts }) => {
-  const deleteData = () => {
-    // delete the data
-    console.log("deleted");
-  };
-
+const getReturns = ({ Returns }) => {
+  const deleteData = () => {};
   return (
     <>
       <div className="mx-auto w-full">
         <div className="w-3/4 mx-auto">
           <h1 className="text-center text-5xl font-bold text-green-500 mt-10">
-            Liste des produits en stock
+            Liste des traitements
           </h1>
         </div>
       </div>
@@ -20,62 +14,48 @@ const manageStock = ({ StockProducts }) => {
           <thead>
             <tr className="text-center">
               <th className="border border-gray-200 p-5 rounded-md">
-                Référence du produit
+                Type de repas
               </th>
               <th className="border border-gray-200 p-5 rounded-md">
-                Catégorie
-              </th>
-              <th className="border border-gray-200 p-5 rounded-md">Unité</th>
-              <th className="border border-gray-200 p-5 rounded-md">
-                Désignation
+                Poids initial
               </th>
               <th className="border border-gray-200 p-5 rounded-md">
-                Stock de sécurité
+                Poids après service
               </th>
               <th className="border border-gray-200 p-5 rounded-md">
-                Stock Actuel
-              </th>
-              <th className="border border-gray-200 p-5 rounded-md">Statut</th>
-              <th className="border border-gray-200 p-5 rounded-md">
-                Date d'entrée en stock
+                Composition des plateaux
               </th>
               <th className="border border-gray-200 p-5 rounded-md">
-                Date de péremption
+                Type de tri prévu
+              </th>
+              <th className="border border-gray-200 p-5 rounded-md">
+                Type du recyclage prévu
               </th>
             </tr>
           </thead>
 
           <tbody>
-            {StockProducts.slice(0)
+            {Returns.slice(0)
               .reverse()
               .map((item) => (
                 <tr key={item.id} className="text-center border">
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.ref}
+                    {item.mealType}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.category}
+                    {item.initialWeight}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.unity}
+                    {item.afterWeight}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.designation}
+                    {item.plateCompo}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.securityStock}
+                    {item.sortMethod}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.actualStock}
-                  </td>
-                  <td className="border border-gray-200 p-5 rounded-md">
-                    {item.status}
-                  </td>
-                  <td className="border border-gray-200 p-5 rounded-md">
-                    {item.entryDate}
-                  </td>
-                  <td className="border border-gray-200 p-5 rounded-md">
-                    {item.expireDate}
+                    {item.recyclingMethod}
                   </td>
                   <td className="" onClick={deleteData}>
                     <svg
@@ -105,16 +85,16 @@ const manageStock = ({ StockProducts }) => {
 // This function gets called at build time
 export async function getStaticProps() {
   // Call an external API endpoint to get posts
-  const res = await fetch("http://localhost:3000/StockProducts");
-  const StockProducts = await res.json();
+  const res = await fetch("http://localhost:3000/Returns");
+  const Returns = await res.json();
 
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {
     props: {
-      StockProducts,
+      Returns,
     },
   };
 }
 
-export default withAuth(manageStock);
+export default getReturns;

@@ -158,5 +158,6 @@ const addProduct = () => {
       </div>
     </> );
 }
+
  
 export default withAuth(addProduct);
