@@ -161,7 +161,7 @@ const addSupplier = () => {
       )}
       <div className="mx-auto w-3/4 mt-10 z-0">
         <h1 className="text-2xl font-bold">Ajouter un fournisseur</h1>
-        <form onSubmit={submitInfo} className="flex flex-col m-20">
+        <form onSubmit={submitInfo} className="flex flex-col">
           <label className="text-green-500 font-bold text-sm mt-4">
             Identifiant Commercial
           </label>
