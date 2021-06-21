@@ -1,5 +1,5 @@
 import NavCard from '../../components/NavCard'
-import WithAuth from '../Auth/withAuth';
+import withAuth from '../Auth/withAuth';
 
 const patient = () => {
 

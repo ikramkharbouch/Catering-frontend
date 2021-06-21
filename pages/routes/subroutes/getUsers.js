@@ -39,7 +39,7 @@ const getUsers = ({ fakeInfo }) => {
               .map((item) => (
                 <tr key={item.id} className="text-center border">
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.fullName}
+                    {item.name}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
                     {item.email}
@@ -75,14 +75,15 @@ const getUsers = ({ fakeInfo }) => {
 // This function gets called at build time
 export async function getStaticProps() {
   // Call an external API endpoint to get posts
-  const res = await fetch(process.env.url + "/v1/users", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  // const res = await fetch(process.env.url + "/v1/users", {
+  //   method: "GET",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // });
+  const res = await fetch("http://localhost:3000/fakeInfo");
   let fakeInfo = await res.json();
-  fakeInfo = fakeInfo.data;
+  // fakeInfo = fakeInfo.data;
   console.log(fakeInfo);
 
   // By returning { props: { posts } }, the Blog component

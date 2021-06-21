@@ -54,6 +54,11 @@
       "meal": "Dîner"
     }
   ],
+  "Sessions": [
+    {
+      "session_id": "8wdf3f487fce22ebqs"
+    }
+  ],
   "Suppliers": [
     {
       "CI": "TR74626",

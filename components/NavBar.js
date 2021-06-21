@@ -2,11 +2,13 @@ import Link from "next/link";
 import Button from "../components/Button";
 import { useState } from "react";
 
-const Navbar = ({}) => {
+const Navbar = ({ Sessions }) => {
   // get active from localStorage
 
   // const logged = localStorage.getItem("isLogged");
-  const [loggedIn, setLoggedIn] = useState(true);
+  // console.log(isLogged);
+  console.log(Sessions);
+  const [loggedIn, setLoggedIn] = useState("");
 
   const handleClick = () => {
     // const logged = localStorage.getItem("loggedIn")
@@ -76,5 +78,22 @@ const Navbar = ({}) => {
     </>
   );
 };
+
+// Let's try to get the session id here
+
+// This function gets called at build time
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts
+  const res = await fetch("http://localhost:3000/Sessions");
+  const Sessions = await res.json();
+
+  // By returning { props: { posts } }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      Sessions,
+    },
+  };
+}
 
 export default Navbar;

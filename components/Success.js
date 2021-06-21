@@ -2,6 +2,10 @@ import Button from "./Button";
 import Link from "next/link";
 
 const Success = ({ data }) => {
+
+  const isLogged = localStorage.getItem("isLogged");
+
+  console.log(isLogged);
   return (
     <>
       <div className="flex flex-col w-3/6 h-3/6 mx-auto mt-24">

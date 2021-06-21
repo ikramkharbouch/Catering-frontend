@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import WithAuth from '../../Auth/withAuth';
+import withAuth from '../../Auth/withAuth';
 
 const addPatient = () => {
   const [ipp, setIpp] = useState("");
