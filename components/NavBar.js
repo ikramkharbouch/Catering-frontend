@@ -7,7 +7,6 @@ const Navbar = ({ Sessions }) => {
 
   // const logged = localStorage.getItem("isLogged");
   // console.log(isLogged);
-  console.log(Sessions);
   const [loggedIn, setLoggedIn] = useState("");
 
   const handleClick = () => {
@@ -57,7 +56,7 @@ const Navbar = ({ Sessions }) => {
               Home
             </a>
           </Link>
-          {!loggedIn && (
+          {loggedIn && (
             <Link href="/login">
               <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white">
                 Login
@@ -65,7 +64,7 @@ const Navbar = ({ Sessions }) => {
             </Link>
           )}
 
-          {loggedIn && (
+          {!loggedIn && (
             <Link href="/logout">
               <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white">
                 logout

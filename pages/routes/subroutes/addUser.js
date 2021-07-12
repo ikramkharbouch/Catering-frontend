@@ -8,14 +8,13 @@ const addUser = () => {
     const [role, setRole] = useState('Admin');
 
     const submitUser = async (e) => {
-        e.preventDefault();
 
         // send data
         // Fetch the api
         const data = {
             fullName, email, password, role
         }
-        const res = await fetch(process.env.url + "/v1/users", {
+        const res = await fetch("http://localhost:4000/v1/users", {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -30,7 +29,7 @@ const addUser = () => {
             <h1 className="text-2xl font-bold">Ajouter un utilisateur</h1>
             <form onSubmit={submitUser} className="flex flex-col mx-auto">
             <label className="text-green-500 font-bold text-sm mt-4">Nom Complet</label>
-                <input type="text" value={fullName} onChange={e => {setfullName(e.target.value)}} placeholder="Entrez votre addresse e-mail" className="border border-green-500 px-2 py-4 rounded-md mt-4"/>
+                <input type="text" value={fullName} onChange={e => {setfullName(e.target.value)}} placeholder="Entrez votre nom complet" className="border border-green-500 px-2 py-4 rounded-md mt-4"/>
                 <label className="text-green-500 font-bold text-sm mt-4">Addresse e-mail:</label>
                 <input type="text" value={email} onChange={e => {setEmail(e.target.value)}} placeholder="Entrez votre addresse e-mail" className="border border-green-500 px-2 py-4 rounded-md mt-4"/>
                 <label className="text-green-500 font-bold text-sm mt-4">Mot de passe:</label>
