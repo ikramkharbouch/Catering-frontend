@@ -6,19 +6,23 @@ const addPatient = () => {
   const [fullName, setfullName] = useState("");
   const [roomNumber, setRoomNumber] = useState("");
   const [gender, setGender] = useState("");
-  const [sojourn, setSojourn] = useState("");
+  const [sejourn, setsejourn] = useState("");
   const [service, setService] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [loginDate, setLoginDate] = useState("");
-  const [onssa, setOnssa] = useState(false);
-  const [iso, setIso] = useState(false);
-  const [quality, setQuality] = useState(false);
-  const [delay, setDelay] = useState(false);
-  const [conditioning, setConditioning] = useState(false);
-  const [temperature, setTemperature] = useState(false);
 
-  const login = (e) => {
+  const [salt, setSalt] = useState(false);
+  const [sugar, setSugar] = useState(false);
+  const [eggs, setEggs] = useState(false);
+  const [Milk, setMilk] = useState(false);
+  const [seafood, setSeaFood] = useState(false);
+  const [grain, setGrain] = useState(false);
+  const [nuts, setNuts] = useState(false);
+  const [fruits, setFruits] = useState(false);
+
+  const submitPatient = (e) => {
     e.preventDefault();
+    console.log(salt);
     // Fetch the api
   };
 
@@ -26,7 +30,7 @@ const addPatient = () => {
   return (
     <div className="mx-auto w-3/4 mt-10">
       <h1 className="text-2xl font-bold">Remplir la prise en charge</h1>
-      <form onSubmit={login} className="flex flex-col mx-auto">
+      <form onSubmit={submitPatient} className="flex flex-col mx-auto">
         <label className="text-green-500 font-bold text-sm mt-4">
           Identification sécurité sociale
         </label>
@@ -79,9 +83,9 @@ const addPatient = () => {
           Type de séjour:
         </label>
         <select
-          value={sojourn}
+          value={sejourn}
           onChange={(e) => {
-            setSojourn(e.target.value);
+            setsejourn(e.target.value);
           }}
           className="border border-green-500 px-2 py-4 rounded-md mt-4"
         >
@@ -132,12 +136,12 @@ const addPatient = () => {
             Particularité alimentaire
         </label>
         <div className="mt-4">
-        <input type="checkbox" id="salt" name="salt"
+        <input type="checkbox" id="salt" name="salt" onChange={(e) => setSalt(e.target.checked)}
              />
         <label for="salt" className="ml-2">Salt</label>
         </div>
         <div className="mt-4">
-        <input type="checkbox" id="sugar" name="sugar" class="checked:bg-green-600 checked:border-transparent"
+        <input type="checkbox" id="sugar" name="sugar" className="checked:bg-green-600 checked:border-transparent" onChange={(e) => setSugar(e.target.checked)}
                />
         <label for="sugar" className="ml-2">Sugar</label>
         </div>
@@ -145,32 +149,32 @@ const addPatient = () => {
             Les allergies
         </label>
         <div className="mt-4">
-        <input type="checkbox" id="eggs" name="eggs"
+        <input type="checkbox" id="eggs" name="eggs" onChange={(e) => setEggs(e.target.checked)}
              />
         <label for="eggs" className="ml-2">Eggs</label>
         </div>
         <div className="mt-4">
-        <input type="checkbox" id="milk" name="milk"
+        <input type="checkbox" id="milk" name="milk" onChange={(e) => setMilk(e.target.checked)}
              />
         <label for="milk" className="ml-2">Milk</label>
         </div>
         <div className="mt-4">
-        <input type="checkbox" id="seafood" name="seafood"
+        <input type="checkbox" id="seafood" name="seafood" onChange={(e) => setSeaFood(e.target.checked)}
              />
         <label for="seafood" className="ml-2">Seafood</label>
         </div>
         <div className="mt-4">
-        <input type="checkbox" id="grain" name="grain"
+        <input type="checkbox" id="grain" name="grain" onChange={(e) => setGrain(e.target.checked)}
              />
         <label for="grain" className="ml-2">Grain</label>
         </div>
         <div className="mt-4">
-        <input type="checkbox" id="nuts" name="nuts"
+        <input type="checkbox" id="nuts" name="nuts" onChange={(e) => setNuts(e.target.checked)}
              />
         <label for="nuts" className="ml-2">Nuts</label>
         </div>
         <div className="mt-4">
-        <input type="checkbox" id="fruits" name="fruits"
+        <input type="checkbox" id="fruits" name="fruits" onChange={(e) => setFruits(e.target.checked)}
              />
         <label for="fruits" className="ml-2">Fruits</label>
         </div>

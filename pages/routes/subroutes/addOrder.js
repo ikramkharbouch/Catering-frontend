@@ -7,10 +7,20 @@ const addOrder = () => {
   const [meals, setMeals] = useState("");
   const [submit, setSubmit] = useState(false);
 
-  const login = (e) => {
-    e.preventDefault();
-    // Fetch the api
-    setSubmit(true);
+  const addMeal = async (e) => {
+    // send data
+        // Fetch the api
+        const data = {
+          fullName, email, password, role
+      }
+      const res = await fetch("http://localhost:4000/v1/users", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+        console.log(res);
   };
 
   return (
@@ -19,7 +29,7 @@ const addOrder = () => {
       {!submit && (
         <div className="mx-auto w-3/4 mt-10">
           <h1 className="text-2xl font-bold">Lancer une commande</h1>
-          <form onSubmit={login} className="flex flex-col mx-auto">
+          <form onSubmit={addMeal} className="flex flex-col mx-auto">
             <label className="text-green-500 font-bold text-sm mt-4">
               Service d'hospitalisation:
             </label>
