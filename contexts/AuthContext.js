@@ -4,7 +4,7 @@ const AuthContext = createContext();
 
 const AuthProvider = ({children}) => {
 
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <AuthContext.Provider

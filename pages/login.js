@@ -1,23 +1,27 @@
 import { useState } from "react";
 import { useRouter } from "next/router"
-
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 // This page shouldn't be accessed if the user is loggedIn
 const Login = () => {
-    const router = useRouter();
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { loggedIn, setLoggedIn } = useContext(AuthContext);
+  console.log(loggedIn);
+
   const login = (e) => {
     e.preventDefault();
-    // Fetch the api
-    if (typeof window !== "undefined") {
-      localStorage.setItem("isLogged", true);
-      console.log(localStorage.getItem("isLogged"));
-      // redirect here
-    }
-    if (localStorage.getItem("isLogged")) {
-        router.push("/")
+    // connect to api to check credentials of user
+    var check = true;
+
+    if (check) {
+      setLoggedIn(true);
+      router.push('/');
+    } else {
+      setLoggedIn(false);
     }
   };
 

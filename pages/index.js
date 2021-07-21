@@ -3,7 +3,6 @@ import Button from '../components/Button'
 import Link from 'next/link'
 import Dashboard from './Dashboard'
 
-
 export default function Home() {
 
   const [isAuthenticated, SetIsAuthenticated] = useState(false);
