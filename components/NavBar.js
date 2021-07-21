@@ -1,18 +1,14 @@
 import Link from "next/link";
-import Button from "../components/Button";
-import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 const Navbar = ({ Sessions }) => {
-  // get active from localStorage
 
-  // const logged = localStorage.getItem("isLogged");
-  // console.log(isLogged);
-  const [loggedIn, setLoggedIn] = useState("");
+  const { loggedIn } = useContext(AuthContext);
+  console.log(loggedIn);
 
   const handleClick = () => {
-    // const logged = localStorage.getItem("loggedIn")
-    // console.log("logged in navbar is", loggedIn);
-    // setLoggedIn(logged);
+    // setLoggedIn(true);
   };
 
   return (
@@ -80,19 +76,19 @@ const Navbar = ({ Sessions }) => {
 
 // Let's try to get the session id here
 
-// This function gets called at build time
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts
-  const res = await fetch("http://localhost:3000/Sessions");
-  const Sessions = await res.json();
+// // This function gets called at build time
+// export async function getStaticProps() {
+//   // Call an external API endpoint to get posts
+//   const res = await fetch("http://localhost:3000/Sessions");
+//   const Sessions = await res.json();
 
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
-  return {
-    props: {
-      Sessions,
-    },
-  };
-}
+//   // By returning { props: { posts } }, the Blog component
+//   // will receive `posts` as a prop at build time
+//   return {
+//     props: {
+//       Sessions,
+//     },
+//   };
+// }
 
 export default Navbar;

@@ -2,28 +2,40 @@ import { React, useState } from "react";
 import withAuth from '../../Auth/withAuth';
 
 const addPatient = () => {
-  const [ipp, setIpp] = useState("");
+  const [ssNumber, setssNumber] = useState("");
   const [fullName, setfullName] = useState("");
   const [roomNumber, setRoomNumber] = useState("");
   const [gender, setGender] = useState("");
   const [sejourn, setsejourn] = useState("");
   const [service, setService] = useState("");
-  const [birthdate, setBirthdate] = useState("");
-  const [loginDate, setLoginDate] = useState("");
+  const [birthday, setbirthday] = useState("");
+  const [enterDate, setenterDate] = useState("");
+  const [disease, setDisease] = useState("");
 
   const [salt, setSalt] = useState(false);
   const [sugar, setSugar] = useState(false);
   const [eggs, setEggs] = useState(false);
-  const [Milk, setMilk] = useState(false);
+  const [milk, setMilk] = useState(false);
   const [seafood, setSeaFood] = useState(false);
   const [grain, setGrain] = useState(false);
   const [nuts, setNuts] = useState(false);
   const [fruits, setFruits] = useState(false);
 
-  const submitPatient = (e) => {
-    e.preventDefault();
-    console.log(salt);
-    // Fetch the api
+  const submitPatient = async (e) => {
+     // send data
+        // Fetch the api
+        e.preventDefault();
+        const data = {
+          fullName, ssNumber, roomNumber, gender, birthday, sejourn, service, enterDate, disease, salt, sugar, eggs, milk, seafood, grain, nuts, fruits
+      }
+      const res = await fetch("http://localhost:4000/v1/patients", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+        console.log(res);
   };
 
 
@@ -36,11 +48,11 @@ const addPatient = () => {
         </label>
         <input
           type="text"
-          value={ipp}
+          value={ssNumber}
           onChange={(e) => {
-            setIpp(e.target.value);
+            setssNumber(e.target.value);
           }}
-          placeholder="Entrez votre addresse e-mail"
+          placeholder="Identification sécurité sociale"
           className="border border-green-500 px-2 py-4 rounded-md mt-4"
         />
         <label className="text-green-500 font-bold text-sm mt-4">
@@ -89,8 +101,8 @@ const addPatient = () => {
           }}
           className="border border-green-500 px-2 py-4 rounded-md mt-4"
         >
-          <option value="Séjour Long">Séjour Long</option>
-          <option value="Séjour Court">Séjour Court</option>
+          <option value="Séjour Long">séjour Long</option>
+          <option value="Séjour Court">séjour Court</option>
         </select>
         <label className="text-green-500 font-bold text-sm mt-4">
           Service d'hospitalisation:
@@ -111,13 +123,31 @@ const addPatient = () => {
           <option value="Réanimation">Réanimation</option>
         </select>
         <label className="text-green-500 font-bold text-sm mt-4">
+          Maladie:
+        </label>
+        <select
+          value={disease}
+          onChange={(e) => {
+            setDisease(e.target.value);
+          }}
+          className="border border-green-500 px-2 py-4 rounded-md mt-4"
+        >
+          <option value="ORL">ORL</option>
+          <option value="Cardiologie">Cardiologie</option>
+          <option value="Endocrinologie">Endocrinologie</option>
+          <option value="Gastroentérologie">Gastroentérologie</option>
+          <option value="Neurologie">Neurologie</option>
+          <option value="Urgences">Urgences</option>
+          <option value="Réanimation">Réanimation</option>
+        </select>
+        <label className="text-green-500 font-bold text-sm mt-4">
           Date de naissance
         </label>
         <input
           type="date"
-          value={birthdate}
+          value={birthday}
           onChange={(e) => {
-            setBirthdate(e.target.value);
+            setbirthday(e.target.value);
           }}
           className="border border-green-500 px-2 py-4 rounded-md mt-4"
         />
@@ -126,9 +156,9 @@ const addPatient = () => {
         </label>
         <input
           type="date"
-          value={loginDate}
+          value={enterDate}
           onChange={(e) => {
-            setLoginDate(e.target.value);
+            setenterDate(e.target.value);
           }}
           className="border border-green-500 px-2 py-4 rounded-md mt-4"
         />
