@@ -5,7 +5,7 @@ import { AuthContext } from "../contexts/AuthContext";
 const Navbar = ({ Sessions }) => {
 
   const { loggedIn } = useContext(AuthContext);
-  console.log(loggedIn);
+  // console.log(loggedIn);
 
   const handleClick = () => {
     // setLoggedIn(true);

@@ -4,6 +4,8 @@ const AuthContext = createContext();
 
 const AuthProvider = ({children}) => {
 
+    // fetch api here 
+    
   const [loggedIn, setLoggedIn] = useState(false);
 
   return (

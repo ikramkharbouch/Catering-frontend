@@ -2,20 +2,17 @@ import { React, useState, useEffect } from 'react'
 import Button from '../components/Button'
 import Link from 'next/link'
 import Dashboard from './Dashboard'
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 export default function Home() {
 
-  const [isAuthenticated, SetIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    // Make a fetch request to the server to check if the user is authenticated or no
-    const isLogged = localStorage.getItem("isLogged")
-    SetIsAuthenticated(isLogged);
-  }, [])
+  const { loggedIn } = useContext(AuthContext);
+  console.log(loggedIn);
 
   return (<> 
 
-  {!isAuthenticated && (<>
+  {!loggedIn && (<>
       <div className="flex flex-col lg:flex-row">
       <img src="Illustration.png" className="w-9/12 m-10 lg:w-6/12 lg:m-20"></img>
       <div className="content mt-2 p-4 text-center lg:mt-20 lg:text-left">
@@ -27,7 +24,7 @@ export default function Home() {
       </div>
       </div>
       </>)}
-      {isAuthenticated && <>
+      {loggedIn && <>
             <Dashboard />
         </>}
       </>

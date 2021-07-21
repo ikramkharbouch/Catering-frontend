@@ -10,19 +10,36 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const { loggedIn, setLoggedIn } = useContext(AuthContext);
-  console.log(loggedIn);
+  // console.log(loggedIn);
 
   const login = (e) => {
     e.preventDefault();
     // connect to api to check credentials of user
-    var check = true;
-
-    if (check) {
-      setLoggedIn(true);
+    const data = {email, password};
+    fetch('http://localhost:4000/v1/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify(data) // body data type must match "Content-Type" header
+    })
+  .then(res => res.json())
+  .then(data => {
+    if (data.authenticated && loggedIn) {
+        setLoggedIn(true);
       router.push('/');
-    } else {
-      setLoggedIn(false);
     }
+    else {
+      console.log("false credentials");
+    }
+  })
+
+    // if (check) {
+    
+    // } else {
+    //   setLoggedIn(false);
+    // }
   };
 
   return (
