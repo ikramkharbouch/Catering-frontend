@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const error = () => {
   return (
-    <div className="flex flex-col w-3/6 h-3/6 mx-auto mt-24">
+    <div className="flex flex-col w-full h-3/6 mx-auto mt-24 text-center">
       <div className="w-16 h-16 mx-auto mt-10">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +18,7 @@ const error = () => {
           />
         </svg>
       </div>
-      <h1 className="mx-auto text-xl">
+      <h1 className="mx-auto mt-4 text-xl lg:text-2xl ">
         The page you are looking for wasn't found
       </h1>
       {/* <div className="flex flex-row justify-center bg-red-500"> */}
@@ -27,18 +27,18 @@ const error = () => {
           {" "}
           <Button
             name="Login"
-            classnames="bg-green-500 w-1/6 font-light text-white mx-auto mt-10"
+            classnames="bg-green-500 font-light text-white mx-auto mt-10"
           />
         </a>
       </Link>
 
-      <p className="mx-auto font-light mt-2">OR</p>
+      <p className="mx-auto font-light mt-2 w-1/2">OR</p>
       <Link href="/">
         <a className="mx-auto">
           {" "}
           <Button
             name="Go back"
-            classnames="w-1/6 font-light text-white mx-auto mt-2 border border-green-500 text-gray-800"
+            classnames="font-light text-white mx-auto mt-2 border border-green-500 text-gray-800"
           />
         </a>
       </Link>
