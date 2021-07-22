@@ -1,14 +1,17 @@
 import { useRouter } from 'next/router'
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const WithAuth = (WrappedComponent) => {
+    
     return (props) => {
         if (typeof window !== "undefined") {
             const Router = useRouter();
 
             // We will verify that the user is authenticated here
-            const verification = localStorage.getItem("isLogged");
+            const {loggedIn} = useContext(AuthContext);
 
-            if (!verification) {
+            if (!loggedIn) {
                 Router.replace("/error");
                 return null;
             }

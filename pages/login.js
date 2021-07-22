@@ -28,19 +28,16 @@ const Login = () => {
     })
   .then(res => res.json())
   .then(data => {
-    if (data.authenticated && loggedIn) {
+    if (data.authenticated) {
+      console.log(data.authenticated);
         setLoggedIn(true);
       router.push('/');
     }
     else {
-      setError("False Credentials, try again.")
+      setError("False Credentials, try again.");
+      router.push('/login');
     }
   })
-    // if (check) {
-    
-    // } else {
-    //   setLoggedIn(false);
-    // }
   };
 
   return (

@@ -1,4 +1,5 @@
 import { useState, React } from "react";
+import withAuth from '../../Auth/withAuth';
 
 const addReturns = () => {
   const [mealType, setMealType] = useState("");
@@ -119,4 +120,4 @@ const addReturns = () => {
   );
 };
 
-export default addReturns;
+export default withAuth(addReturns);

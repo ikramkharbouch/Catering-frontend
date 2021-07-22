@@ -1,3 +1,5 @@
+import withAuth from '../../Auth/withAuth';
+
 const getReturns = ({ Returns }) => {
   const deleteData = () => {};
   return (
@@ -97,4 +99,4 @@ export async function getStaticProps() {
   };
 }
 
-export default getReturns;
+export default withAuth(getReturns);
