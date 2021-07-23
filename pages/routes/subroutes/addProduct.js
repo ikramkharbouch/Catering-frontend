@@ -1,5 +1,6 @@
 import { useState, react } from "react";
 import withAuth from '../../Auth/withAuth';
+import Navbar from "../../../components/NavBar";
 
 const addProduct = () => {
 
@@ -19,6 +20,7 @@ const addProduct = () => {
 
 
     return ( <> 
+    <Navbar />
         <div className="mx-auto w-3/4 mt-10">
         <h1 className="text-2xl font-bold">Ajouter un produit au stock</h1>
         <form onSubmit={submitInfo} className="flex flex-col mx-auto">

@@ -1,5 +1,6 @@
 import NavCard from '../../components/NavCard'
 import withAuth from '../Auth/withAuth';
+import Navbar from '../../components/NavBar';
 
 const patient = () => {
 
@@ -22,6 +23,7 @@ const patient = () => {
         }
     ]
     return ( <> 
+    <Navbar />
         <h1 className="text-center text-5xl font-bold text-green-500 mt-10">Patients</h1>
             <div className="grid gap-2 grid-cols-1 mt-10 mx-auto lg:w-4/5 md:grid-cols-1 lg:grid-cols-2">
             {List.map((item) => (

@@ -1,29 +1,23 @@
 import { useRouter } from "next/router";
-import { useContext, useEffect } from "react";
-import { AuthContext } from "../contexts/AuthContext";
+import { useState, useEffect } from "react";
 
 const logout = () => {
   const router = useRouter();
 
-  const { loggedIn, handleAuth } = useContext(AuthContext);
+  const [loggedIn, setLoggedIn] = useState("");
 
-  console.log(loggedIn)
   useEffect(() => {
-    if (loggedIn) {
-      localStorage.setItem('loggedIn', false);
-      handleAuth();
-      console.log(localStorage.getItem("loggedIn"));
-      router.push('/');
+    if (typeof localStorage !== "undefined") {
+      localStorage.clear();
+      router.push("/");
+    } else {
+      console.log("The user is already logged out");
     }
-  }, [])
-  
-  console.log(loggedIn);
+  }, []);
 
-  return (
-    <>
-      {!loggedIn && <h1>You have been logged out</h1>}
-    </>
-  );
+  console.log(localStorage.getItem('loggedIn'));
+
+  return <>{!loggedIn && <h1>You have been logged out</h1>}</>;
 };
 
 export default logout;

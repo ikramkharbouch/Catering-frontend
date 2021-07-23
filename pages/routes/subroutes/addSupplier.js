@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import ModalBox from "../../../components/ModalBox";
 import Button from "../../../components/Button";
 import withAuth from '../../Auth/withAuth';
+import Navbar from "../../../components/NavBar";
 
 const addSupplier = () => {
   const [identifier, setIdentifier] = useState("");
@@ -124,6 +125,7 @@ const addSupplier = () => {
 
   return (
     <>
+    <Navbar />
       {modal && (
         <ModalBox
           classnames="visible"

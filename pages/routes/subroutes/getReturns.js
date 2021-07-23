@@ -1,9 +1,11 @@
 import withAuth from '../../Auth/withAuth';
+import Navbar from '../../../components/NavBar';
 
 const getReturns = ({ Returns }) => {
   const deleteData = () => {};
   return (
     <>
+    <Navbar />
       <div className="mx-auto w-full">
         <div className="w-3/4 mx-auto">
           <h1 className="text-center text-5xl font-bold text-green-500 mt-10">

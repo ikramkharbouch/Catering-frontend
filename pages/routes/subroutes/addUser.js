@@ -1,5 +1,6 @@
 import { React, useState } from 'react'
 import withAuth from '../../Auth/withAuth';
+import Navbar from '../../../components/NavBar';
 
 const addUser = () => {
     const [fullName, setfullName] = useState('');
@@ -24,7 +25,8 @@ const addUser = () => {
           console.log(res);
     }
 
-    return (
+    return ( <>
+    <Navbar />
         <div className="mx-auto w-3/4 mt-10">
             <h1 className="text-2xl font-bold">Ajouter un utilisateur</h1>
             <form onSubmit={submitUser} className="flex flex-col mx-auto">
@@ -45,6 +47,7 @@ const addUser = () => {
                 <button type="submit" className="bg-green-500 px-2 py-4 rounded-md mt-4 text-white font-bold">Enregister</button>
             </form>
         </div>
+        </>
       );
 }
  

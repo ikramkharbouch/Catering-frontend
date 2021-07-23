@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import Success from "../../../components/Success"
 import withAuth from '../../Auth/withAuth';
+import Navbar from "../../../components/NavBar";
 
 const addOrder = () => {
   const [hospitalizationType, setHospitalizationType] = useState("");
@@ -25,6 +26,7 @@ const addOrder = () => {
 
   return (
     <>
+    <Navbar />
       {submit && <Success data="Order"/>}
       {!submit && (
         <div className="mx-auto w-3/4 mt-10">

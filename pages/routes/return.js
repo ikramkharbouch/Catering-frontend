@@ -1,5 +1,6 @@
 import withAuth from "../Auth/withAuth";
 import NavCard from "../../components/NavCard";
+import Navbar from "../../components/NavBar";
 
 const recycle = ({ Returns }) => {
   const List = [
@@ -22,6 +23,7 @@ const recycle = ({ Returns }) => {
   ];
   return (
     <>
+    <Navbar />
       <h1 className="text-center text-5xl font-bold text-green-500 mt-10">
         Recyclage
       </h1>

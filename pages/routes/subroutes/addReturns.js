@@ -1,5 +1,6 @@
 import { useState, React } from "react";
 import withAuth from '../../Auth/withAuth';
+import Navbar from "../../../components/NavBar";
 
 const addReturns = () => {
   const [mealType, setMealType] = useState("");
@@ -30,7 +31,9 @@ const addReturns = () => {
     console.log(res);
   };
 
-  return (
+  return ( 
+    <>
+    <Navbar />
     <div className="mx-auto w-3/4 mt-10">
       <h1 className="text-2xl font-bold">Retouner un produit</h1>
       <form onSubmit={submitUser} className="flex flex-col mx-auto">
@@ -117,6 +120,7 @@ const addReturns = () => {
         </button>
       </form>
     </div>
+    </>
   );
 };
 

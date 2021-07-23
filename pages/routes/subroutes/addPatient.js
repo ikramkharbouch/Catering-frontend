@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import withAuth from '../../Auth/withAuth';
+import Navbar from "../../../components/NavBar";
 
 const addPatient = () => {
   const [ssNumber, setssNumber] = useState("");
@@ -39,7 +40,8 @@ const addPatient = () => {
   };
 
 
-  return (
+  return ( <>
+  <Navbar />
     <div className="mx-auto w-3/4 mt-10">
       <h1 className="text-2xl font-bold">Remplir la prise en charge</h1>
       <form onSubmit={submitPatient} className="flex flex-col mx-auto">
@@ -216,6 +218,7 @@ const addPatient = () => {
         </button>
       </form>
     </div>
+    </>
   );
 };
 

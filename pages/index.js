@@ -2,18 +2,29 @@ import { React, useState, useEffect } from "react";
 import Button from "../components/Button";
 import Link from "next/link";
 import Dashboard from "./Dashboard";
+import Navbar from "../components/NavBar";
 
 export default function Home() {
-  if (typeof localStorage !== "undefined") {
-    var loggedIn = localStorage.getItem("loggedIn");
-  } else {
-    localStorage.setItem("loggedIn", false);
-  }
+  
+  const [loggedIn, setLoggedIn] = useState("");
 
-  var loggedIn = localStorage.getItem("loggedIn");
+  useEffect(() => {
+    if (typeof localStorage !== "undefined") {
+      console.log("but here 1");
+      const smth = localStorage.getItem('loggedIn')
+      setLoggedIn(smth);
+    } else {
+      console.log("entered here")
+      const smth = localStorage.setItem("loggedIn", false);
+      setLoggedIn(smth);
+    }
+  }, []);
 
+  console.log(loggedIn)
+  
   return (
     <>
+    <Navbar />
       {!loggedIn && (
         <>
           <div className="flex flex-col lg:flex-row">
