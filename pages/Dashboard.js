@@ -59,8 +59,7 @@ const Dashboard = () => {
       <h1 className="text-center text-5xl font-bold text-green-500 mt-10">
         Dashboard
       </h1>
-      {/**/}
-      {/* <div className="flex flex-wrap mx-auto flex-col lg:flex-row w-full mt-10 ml-10"> */}
+      
       <div className="grid gap-2 grid-cols-1 mt-10 w-full lg:w-4/5 mx-auto md:grid-cols-1 lg:grid-cols-3">
         {HomeComponents.map((component) => (
           <NavCard

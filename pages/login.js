@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useRouter } from "next/router"
+import { useRouter } from "next/router";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import ErrorCard from "../components/ErrorCard";
@@ -11,33 +11,33 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const { loggedIn, setLoggedIn } = useContext(AuthContext);
-  // console.log(loggedIn);
+  const { loggedIn, handleAuth } = useContext(AuthContext);
 
-  const login = (e) => {
+  const login = async (e) => {
     e.preventDefault();
     // connect to api to check credentials of user
-    const data = {email, password};
-    fetch('http://localhost:4000/v1/login', {
-      method: 'POST',
+    const data = { email, password };
+    const result = await fetch("http://localhost:4000/v1/login", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data) // body data type must match "Content-Type" header
-    })
-  .then(res => res.json())
-  .then(data => {
-    if (data.authenticated) {
-      console.log(data.authenticated);
-        setLoggedIn(true);
-      router.push('/');
-    }
-    else {
+      credentials: 'include',
+      body: JSON.stringify(data), // body data type must match "Content-Type" header
+    }).then((res) => res.json());
+
+    if (result.authenticated) {
+      if (typeof window !== "undefined") {
+        localStorage.setItem('loggedIn', true);
+        router.push('/')
+      }
+      // handleAuth();
+      router.push("/");
+    } else {
       setError("False Credentials, try again.");
-      router.push('/login');
+      console.log("here");
+      router.push("/login");
     }
-  })
   };
 
   return (

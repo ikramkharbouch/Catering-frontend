@@ -1,18 +1,27 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const AuthContext = createContext();
 
-const AuthProvider = ({children}) => {
+var _auth;
 
-    // fetch api here 
-    
+const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
+  
+  // useEffect(() => {
+  //   _auth = localStorage.getItem('loggedIn');
+  //   setLoggedIn(_auth);
+  // }, []);
+
+  const handleAuth = () => {
+    console.log("entered in handleAuth")
+    setLoggedIn(_auth);
+  }
 
   return (
     <AuthContext.Provider
       value={{
         loggedIn,
-        setLoggedIn
+        handleAuth,
       }}
     >
       {children}

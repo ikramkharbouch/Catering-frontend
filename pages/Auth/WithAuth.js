@@ -1,26 +1,28 @@
-import { useRouter } from 'next/router'
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
+import { useRouter } from "next/router";
 
 const WithAuth = (WrappedComponent) => {
-    
-    return (props) => {
-        if (typeof window !== "undefined") {
-            const Router = useRouter();
+  return (props) => {
+    if (typeof window !== "undefined") {
+      const router = useRouter();
 
-            // We will verify that the user is authenticated here
-            const {loggedIn} = useContext(AuthContext);
+      if (typeof localStorage !== "undefined") {
+        var loggedIn = localStorage.getItem("loggedIn");
+      } else {
+        var loggedIn = localStorage.setItem("loggedIn", false);
+      }
 
-            if (!loggedIn) {
-                Router.replace("/error");
-                return null;
-            }
-            return <WrappedComponent {...props} />
-        }
+      console.log(loggedIn);
 
-        // Just in case we are on the server
+      if (!loggedIn) {
+        router.replace("/error");
         return null;
-    };
-}
- 
+      }
+      return <WrappedComponent {...props} />;
+    }
+
+    // Just in case we are on the server
+    return null;
+  };
+};
+
 export default WithAuth;

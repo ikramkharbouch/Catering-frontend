@@ -1,11 +1,18 @@
 import Link from "next/link";
-import { useContext } from "react";
-import { AuthContext } from "../contexts/AuthContext";
+import { useEffect, useState } from "react";
 
-const Navbar = ({ Sessions }) => {
+const Navbar = () => {
+  const [loggedIn, setLoggedIn] = useState('');
 
-  const { loggedIn } = useContext(AuthContext);
-  // console.log(loggedIn);
+  useEffect(() => {
+    if (typeof localStorage !== "undefined") {
+      setLoggedIn(localStorage.getItem("loggedIn"));
+    } else {
+      setLoggedIn(localStorage.setItem("loggedIn", false));
+    }
+  }, []);
+
+  console.log(loggedIn)
 
   const handleClick = () => {
     // setLoggedIn(true);
@@ -73,22 +80,5 @@ const Navbar = ({ Sessions }) => {
     </>
   );
 };
-
-// Let's try to get the session id here
-
-// // This function gets called at build time
-// export async function getStaticProps() {
-//   // Call an external API endpoint to get posts
-//   const res = await fetch("http://localhost:3000/Sessions");
-//   const Sessions = await res.json();
-
-//   // By returning { props: { posts } }, the Blog component
-//   // will receive `posts` as a prop at build time
-//   return {
-//     props: {
-//       Sessions,
-//     },
-//   };
-// }
 
 export default Navbar;

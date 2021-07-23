@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import withAuth from '../../Auth/withAuth';
 
-const getUsers = ({ fakeInfo }) => {
+const getUsers = ({ Users }) => {
   const [order, setOrder] = useState("");
 
   const deleteData = () => {
@@ -33,13 +33,10 @@ const getUsers = ({ fakeInfo }) => {
           </thead>
 
           <tbody>
-            {fakeInfo
-              .slice(0)
-              .reverse()
-              .map((item) => (
+            {Users.map((item) => (
                 <tr key={item.id} className="text-center border">
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.name}
+                    {item.fullName}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
                     {item.email}
@@ -81,16 +78,16 @@ export async function getStaticProps() {
   //     "Content-Type": "application/json",
   //   },
   // });
-  const res = await fetch("http://localhost:3000/fakeInfo");
-  let fakeInfo = await res.json();
-  // fakeInfo = fakeInfo.data;
-  console.log(fakeInfo);
+  const res = await fetch("http://localhost:4000/v1/users");
+  let Users = await res.json();
+
+  Users = Users['data'];
 
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {
     props: {
-      fakeInfo,
+      Users,
     },
   };
 }
