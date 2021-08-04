@@ -46,7 +46,7 @@ const Dashboard = () => {
     },
     {
       id: 6,
-      title: "Règle d'hygiène",
+      title: "Règles d'hygiène",
       subtitle: "Les meilleurs pratiques",
       image: "home-images/supply.jpg",
       btn: "Continuer",

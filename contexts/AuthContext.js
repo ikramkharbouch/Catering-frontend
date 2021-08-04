@@ -6,11 +6,6 @@ var _auth;
 
 const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
-  
-  // useEffect(() => {
-  //   _auth = localStorage.getItem('loggedIn');
-  //   setLoggedIn(_auth);
-  // }, []);
 
   const handleAuth = () => {
     console.log("entered in handleAuth")

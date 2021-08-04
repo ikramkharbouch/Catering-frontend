@@ -9,20 +9,20 @@ const addUser = () => {
     const [role, setRole] = useState('Admin');
 
     const submitUser = async (e) => {
-
-        // send data
-        // Fetch the api
+        e.preventDefault();
         const data = {
             fullName, email, password, role
         }
-        const res = await fetch("http://localhost:4000/v1/users", {
+        const res = await fetch("/api/adduser", {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
           });
-          console.log(res);
+          if (res === 403) {
+              
+          }
     }
 
     return ( <>

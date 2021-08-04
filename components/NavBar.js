@@ -12,7 +12,6 @@ const Navbar = () => {
     }
   }, []);
 
-  console.log(loggedIn);
 
   const handleClick = () => {
     // setLoggedIn(true);
