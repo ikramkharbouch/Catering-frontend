@@ -9,8 +9,15 @@ export default async function adduser(req, res) {
             },
             body: JSON.stringify(req.body)
           });
-          console.log(result.status);
-        res.status(200).json({ result: result.status })
+          const status = result.status;
+          if (status == 200)
+          {
+            res.status(200);
+            res.end()
+          } else {
+            res.status(500);
+            res.end();
+          }
     } else {
       res.status(430).json({ status: "ok" })
     }

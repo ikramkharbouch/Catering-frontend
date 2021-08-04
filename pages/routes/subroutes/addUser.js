@@ -1,12 +1,16 @@
 import { React, useState } from 'react'
 import withAuth from '../../Auth/withAuth';
 import Navbar from '../../../components/NavBar';
+import SuccessCard from '../../../components/SuccessCard'
+import ErrorCard from '../../../components/ErrorCard'
 
 const addUser = () => {
     const [fullName, setfullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('Admin');
+    const [error, setError] = useState(true);
+    const [success, setSuccess] = useState(false);
 
     const submitUser = async (e) => {
         e.preventDefault();
@@ -20,13 +24,22 @@ const addUser = () => {
             },
             body: JSON.stringify(data)
           });
-          if (res === 403) {
-              
+
+          console.log(res.status);
+          
+          if (res.status == 403 || res.status == 500) {
+              console.log("error");
+              setError(true);
+          } else if (res.status === 200) {
+            console.log("success");
+              setSuccess(true);
           }
     }
 
     return ( <>
     <Navbar />
+        {error && <ErrorCard error="Something went wrong" />}
+        {success && <SuccessCard message="User was added successfully" />}
         <div className="mx-auto w-3/4 mt-10">
             <h1 className="text-2xl font-bold">Ajouter un utilisateur</h1>
             <form onSubmit={submitUser} className="flex flex-col mx-auto">

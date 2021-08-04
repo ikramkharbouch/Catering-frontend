@@ -88,13 +88,15 @@ table tr:last-child td:last-child {
     color: #ff0000;
     height: 3rem;
     border-radius: 10px;
+    width: 75%;
 }
 
 .success-card {
-    background-color: #c1ee87;
-    color: #27c707;
+    background-color: #10B981;
+    color: #e0f8db;
     height: 3rem;
     border-radius: 10px;
+    width: 75%;
 }
   
 
