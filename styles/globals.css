@@ -89,6 +89,13 @@ table tr:last-child td:last-child {
     height: 3rem;
     border-radius: 10px;
 }
+
+.success-card {
+    background-color: #c1ee87;
+    color: #27c707;
+    height: 3rem;
+    border-radius: 10px;
+}
   
 
 @media only screen and (max-width: 768px) {
