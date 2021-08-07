@@ -1,16 +1,22 @@
-import { React, useState } from 'react'
+import { React, useState, useEffect } from 'react'
 import withAuth from '../../Auth/withAuth';
 import Navbar from '../../../components/NavBar';
-import SuccessCard from '../../../components/SuccessCard'
-import ErrorCard from '../../../components/ErrorCard'
+import { SuccessCard } from '../../../components/SuccessCard';
+import ErrorCard from '../../../components/ErrorCard';
+import Router from 'next/router'
 
 const addUser = () => {
     const [fullName, setfullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('Admin');
-    const [error, setError] = useState(true);
+    const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
+
+    useEffect(() => {
+        setError(false);
+        setSuccess(false);
+    }, [])
 
     const submitUser = async (e) => {
         e.preventDefault();
@@ -30,9 +36,11 @@ const addUser = () => {
           if (res.status == 403 || res.status == 500) {
               console.log("error");
               setError(true);
-          } else if (res.status === 200) {
-            console.log("success");
-              setSuccess(true);
+              Router.reload(window.location.pathname);
+          } else if (res.status == 200) {
+                console.log("success");
+                setSuccess(true);
+                Router.reload(window.location.pathname);
           }
     }
 
