@@ -12,6 +12,12 @@ const addOrder = () => {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  const resetValues = () => {
+    setssNumber("");
+    setDisease("ORL");
+    setMeal("Petit déjeuner");
+  }
+
   const addMeal = async (e) => {
     // send data
     // Fetch the api
@@ -32,11 +38,18 @@ const addOrder = () => {
     console.log(res.status);
 
     if (res.status == 403 || res.status == 500) {
+      resetValues();
       setError(true);
-      Router.reload(window.location.pathname);
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
     } else if (res.status == 200) {
+      resetValues();
       setSuccess(true);
-      Router.reload(window.location.pathname);
+      setTimeout(() => {
+        // Router.reload(window.location.pathname);
+        setSuccess(true);
+      }, 3000);
     }
   };
 
@@ -61,6 +74,7 @@ const addOrder = () => {
             }}
             placeholder="Entrez votre numéro de sécurité sociale"
             className="border border-green-500 px-2 py-4 rounded-md mt-4"
+            required
           />
           <label className="text-green-500 font-bold text-sm mt-4">
             Service d'hospitalisation:
