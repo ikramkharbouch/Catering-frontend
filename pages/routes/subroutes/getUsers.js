@@ -73,17 +73,9 @@ const getUsers = ({ Users }) => {
 
 // This function gets called at build time
 export async function getStaticProps() {
-  // Call an external API endpoint to get posts
-  // const res = await fetch(process.env.url + "/v1/users", {
-  //   method: "GET",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // });
-  const res = await fetch("http://localhost:4000/v1/users");
-  let Users = await res.json();
 
-  Users = Users['data'];
+  var Users = await fetch("http://localhost:3005/api/getUsers");
+  Users = await Users.json();
 
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time

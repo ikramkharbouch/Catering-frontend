@@ -3,7 +3,7 @@ import withAuth from '../../Auth/withAuth';
 import Navbar from '../../../components/NavBar';
 import { SuccessCard } from '../../../components/SuccessCard';
 import ErrorCard from '../../../components/ErrorCard';
-import Router from 'next/router'
+import Router from 'next/router';
 
 const addUser = () => {
     const [fullName, setfullName] = useState('');

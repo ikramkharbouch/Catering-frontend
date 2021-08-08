@@ -10,17 +10,15 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof localStorage !== "undefined") {
-      console.log("but here 1");
-      const smth = localStorage.getItem('loggedIn')
-      setLoggedIn(smth);
+      const auth = localStorage.getItem('loggedIn')
+      setLoggedIn(auth);
     } else {
-      console.log("entered here")
-      const smth = localStorage.setItem("loggedIn", false);
-      setLoggedIn(smth);
+      const auth = localStorage.setItem("loggedIn", false);
+      setLoggedIn(auth);
     }
   }, []);
 
-  console.log(loggedIn)
+  console.log(loggedIn);
   
   return (
     <>

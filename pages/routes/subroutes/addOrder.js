@@ -2,36 +2,51 @@ import { React, useState } from "react";
 import Success from "../../../components/Success"
 import withAuth from '../../Auth/withAuth';
 import Navbar from "../../../components/NavBar";
+import Router from 'next/router';
 
 const addOrder = () => {
+  const [ssNumber, setssNumber] = useState("");
   const [hospitalizationType, setHospitalizationType] = useState("");
   const [meals, setMeals] = useState("");
-  const [submit, setSubmit] = useState(false);
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const addMeal = async (e) => {
     // send data
         // Fetch the api
+        e.preventDefault();
         const data = {
-          fullName, email, password, role
+          ssNumber, hospitalizationType, meals
       }
-      const res = await fetch("http://localhost:4000/v1/users", {
+      const res = await fetch("/api/orders", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(data)
         });
-        console.log(res);
+        
+        console.log(res.status);
+          
+        if (res.status == 403 || res.status == 500) {
+            console.log("error");
+            setError(true);
+            // Router.reload(window.location.pathname);
+        } else if (res.status == 200) {
+              console.log("success");
+              setSuccess(true);
+              // Router.reload(window.location.pathname);
+        }
   };
 
   return (
     <>
     <Navbar />
-      {submit && <Success data="Order"/>}
-      {!submit && (
         <div className="mx-auto w-3/4 mt-10">
           <h1 className="text-2xl font-bold">Lancer une commande</h1>
           <form onSubmit={addMeal} className="flex flex-col mx-auto">
+          <label className="text-green-500 font-bold text-sm mt-4">Numéro de sécurité sociale :</label>
+                <input type="text" value={ssNumber} onChange={e => {setssNumber(e.target.value)}} placeholder="Entrez votre numéro de sécurité sociale" className="border border-green-500 px-2 py-4 rounded-md mt-4"/>
             <label className="text-green-500 font-bold text-sm mt-4">
               Service d'hospitalisation:
             </label>
@@ -72,7 +87,6 @@ const addOrder = () => {
             </button>
           </form>
         </div>
-      )}
     </>
   );
 };
