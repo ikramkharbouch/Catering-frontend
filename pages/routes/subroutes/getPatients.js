@@ -49,30 +49,30 @@ const getPatients = ({ Patients }) => {
             {Patients.slice(0)
               .reverse()
               .map((item) => (
-                <tr key={item.IPP} className="text-center border">
+                <tr key={item.ssNumber} className="text-center border">
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.IPP}
+                    {item.ssNumber}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.name}
+                    {item.fullName}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.sex}
+                    {item.gender}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.birthdate}
+                    {item.birthday}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.rnum}
+                    {item.roomNumber}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.sojourn}
+                    {item.sejourn}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.hospitalization}
+                    {item.disease}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.entryDate}
+                    {item.enterDate}
                   </td>
                   <td className="" onClick={deleteData}>
                     <svg
@@ -102,8 +102,8 @@ const getPatients = ({ Patients }) => {
 // This function gets called at build time
 export async function getStaticProps() {
   // Call an external API endpoint to get posts
-  const res = await fetch("http://localhost:3000/Patients");
-  const Patients = await res.json();
+  const res = await fetch("http://localhost:3005/api/getPatients");
+  var Patients = await res.json();
 
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
