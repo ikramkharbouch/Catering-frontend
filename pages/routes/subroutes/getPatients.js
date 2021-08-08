@@ -1,7 +1,6 @@
 import withAuth from '../../Auth/withAuth';
 import Navbar from '../../../components/NavBar';
 
-
 const getPatients = ({ Patients }) => {
   const deleteData = () => {
     // delete the data
