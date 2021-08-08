@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import withAuth from "../../Auth/withAuth";
 import Navbar from "../../../components/NavBar";
-import Router from "next/router";
 import SuccessCard from "../../../components/SuccessCard";
 import ErrorCard from "../../../components/ErrorCard";
 
@@ -34,8 +33,6 @@ const addOrder = () => {
       },
       body: JSON.stringify(data),
     });
-
-    console.log(res.status);
 
     if (res.status == 403 || res.status == 500) {
       resetValues();

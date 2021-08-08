@@ -34,9 +34,9 @@ const getOrders = ({ Orders }) => {
             {Orders.slice(0)
               .reverse()
               .map((item) => (
-                <tr key={item.IPP} className="text-center border">
+                <tr key={item._id} className="text-center border">
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.hospitalization}
+                    {item.disease}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
                     {item.meal}
@@ -69,8 +69,8 @@ const getOrders = ({ Orders }) => {
 // This function gets called at build time
 export async function getStaticProps() {
   // Call an external API endpoint to get posts
-  const res = await fetch("http://localhost:3000/Orders");
-  const Orders = await res.json();
+  const res = await fetch("http://localhost:3005/api/getOrders");
+  var Orders = await res.json();
 
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
