@@ -5,6 +5,7 @@ export default async function getUsers(req, res) {
             method: 'GET',
           });
         result = await result.json();
+        console.log(result['data'])
         res.json(result['data']);
     } else {
       res.status(430).json({ message: "You cannot access this route" })

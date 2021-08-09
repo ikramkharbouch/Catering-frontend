@@ -1,18 +1,51 @@
-import { React, useState } from "react";
-import withAuth from '../../Auth/withAuth';
+import { React, useState, useEffect } from "react";
+import withAuth from "../../Auth/withAuth";
 import Navbar from "../../../components/NavBar";
+import SuccessCard from "../../../components/SuccessCard";
+import ErrorCard  from "../../../components/ErrorCard";
+import Router from "next/router";
 
 const getUsers = ({ Users }) => {
   const [order, setOrder] = useState("");
+  const [id, setId] = useState("");
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
 
-  const deleteData = () => {
-    // delete the data
-    console.log("deleted");
+  useEffect(() => {
+    setError(false);
+    setSuccess(false);
+  }, []);
+
+  const deleteData = async (e) => {
+    // Get the id of the target
+    const target = e.target.id;
+    setId(target);
+
+    const deleted = await fetch(
+      "http://localhost:3005/api/deleteUser/" + target,
+      {
+        method: "DELETE",
+      }
+    );
+
+    if (deleted.status == 200) {
+      setTimeout(() => {
+        Router.reload(window.location.pathname);
+        setSuccess(true);
+      }, 3000);
+    } else if (deleted.status == 404) {
+      setTimeout(() => {
+        Router.reload(window.location.pathname);
+        setError(true);
+      }, 3000);
+    }
   };
 
   return (
     <>
-    <Navbar />
+      <Navbar />
+      {success && <SuccessCard message="User was deleted successfully" />}
+      {error && <ErrorCard error="Something went wrong" />}
       <div className="mx-auto w-full">
         <div className="w-3/4 mx-auto">
           <h1 className="text-center text-5xl font-bold text-green-500 mt-10">
@@ -36,34 +69,36 @@ const getUsers = ({ Users }) => {
 
           <tbody>
             {Users.map((item) => (
-                <tr key={item.id} className="text-center border">
-                  <td className="border border-gray-200 p-5 rounded-md">
-                    {item.fullName}
-                  </td>
-                  <td className="border border-gray-200 p-5 rounded-md">
-                    {item.email}
-                  </td>
-                  <td className="border border-gray-200 p-5 rounded-md">
-                    {item.role}
-                  </td>
-                  <td className="" onClick={deleteData}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 mx-auto"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="#ff0000"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                      />
-                    </svg>
-                  </td>
-                </tr>
-              ))}
+              <tr key={item.id} className="text-center border">
+                <td className="border border-gray-200 p-5 rounded-md">
+                  {item.fullName}
+                </td>
+                <td className="border border-gray-200 p-5 rounded-md">
+                  {item.email}
+                </td>
+                <td className="border border-gray-200 p-5 rounded-md">
+                  {item.role}
+                </td>
+                <td id={item._id} className="" onClick={deleteData}>
+                  <svg
+                    id={item._id}
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 mx-auto"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="#ff0000"
+                  >
+                    <path
+                      id={item.id}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                    />
+                  </svg>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -73,7 +108,6 @@ const getUsers = ({ Users }) => {
 
 // This function gets called at build time
 export async function getStaticProps() {
-
   var Users = await fetch("http://localhost:3005/api/getUsers");
   Users = await Users.json();
 

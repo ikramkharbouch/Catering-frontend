@@ -18,7 +18,6 @@ const addProduct = () => {
 
     }
 
-
     return ( <> 
     <Navbar />
         <div className="mx-auto w-3/4 mt-10">
