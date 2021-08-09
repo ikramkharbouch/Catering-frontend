@@ -1,26 +1,59 @@
 import { useState, react } from "react";
-import withAuth from '../../Auth/withAuth';
+import withAuth from "../../Auth/withAuth";
 import Navbar from "../../../components/NavBar";
 
 const addProduct = () => {
+  const [productref, setProductRef] = useState("");
+  const [category, setCategory] = useState("");
+  const [unite, setUnite] = useState("");
+  const [unitPrice, setUnitPrice] = useState("");
+  const [safetyStock, setSafetyStock] = useState("");
+  const [actualStock, setActualStock] = useState("");
+  const [status, setStatus] = useState("");
+  const [expireAt, setExpireAt] = useState("");
+  const [addedAt, setAddedAt] = useState("");
+  const [yearlyOrders, setYearlyOrders] = useState("");
+  const [costOfProcurement, setCostOfProcurement] = useState("");
+  const [possessionCost, setPossessionCost] = useState("");
 
-    const [ref, setRef] = useState('');
-    const [category, setCategory] = useState('')
-    const [unity, setUnity] = useState('')
-    const [designation, setDesignation] = useState('')
-    const [securityStock, setSecurityStock] = useState('')
-    const [actualStock, setActualStock] = useState('')
-    const [status, setStatus] = useState('')
-    const [entryDate, setEntryDate] = useState('')
-    const [expireDate, setExpireDate] = useState('')
+  const submitInfo = async (e) => {
 
-    const submitInfo = () => {
+    e.preventDefault();
+    const data = {
+      productref,
+      category,
+      unite,
+      unitPrice,
+      safetyStock,
+      actualStock,
+      status,
+      expireAt,
+      addedAt,
+      yearlyOrders,
+      costOfProcurement,
+      possessionCost,
+    };
+    const result = await fetch("http://localhost:3005/api/addProduct", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify(data),
+    });
 
+    if (result.status == 200)
+    {
+      console.log("Added Successfully");
+    } else if (result.status == 500) {
+      console.log("Something went wrong");
     }
+  };
 
-    return ( <> 
-    <Navbar />
-        <div className="mx-auto w-3/4 mt-10">
+  return (
+    <>
+      <Navbar />
+      <div className="mx-auto w-3/4 mt-10">
         <h1 className="text-2xl font-bold">Ajouter un produit au stock</h1>
         <form onSubmit={submitInfo} className="flex flex-col mx-auto">
           <label className="text-green-500 font-bold text-sm mt-4">
@@ -28,9 +61,9 @@ const addProduct = () => {
           </label>
           <input
             type="text"
-            value={ref}
+            value={productref}
             onChange={(e) => {
-              setRef(e.target.value);
+              setProductRef(e.target.value);
             }}
             placeholder="Référence du produit"
             className="border border-green-500 px-2 py-4 rounded-md mt-4"
@@ -45,11 +78,11 @@ const addProduct = () => {
             }}
             className="border border-green-500 px-2 py-4 rounded-md mt-4"
           >
-            <option value="Admin">Catégorie</option>
-            <option value="Aide soignant">Aide soignant</option>
-            <option value="Agent restauration">Agent restauration</option>
-            <option value="Responsable approvisionnement">
-              Responsable approvisionnement
+            <option value="Equipement">Equipement</option>
+            <option value="Aliment">Aliment</option>
+            <option value="Maintenance">Maintenance</option>
+            <option value="Produit hygienique">
+            Produit hygiénique
             </option>
             <option value="None">None</option>
           </select>
@@ -57,41 +90,38 @@ const addProduct = () => {
             Unité:
           </label>
           <select
-            value={unity}
+            value={unite}
             onChange={(e) => {
-              setUnity(e.target.value);
+              setUnite(e.target.value);
             }}
             className="border border-green-500 px-2 py-4 rounded-md mt-4"
           >
-            <option value="Admin">Unité</option>
-            <option value="Aide soignant">Aide soignant</option>
-            <option value="Agent restauration">Agent restauration</option>
-            <option value="Responsable approvisionnement">
-              Responsable approvisionnement
-            </option>
-            <option value="None">None</option>
+            <option value="Pièce">Pièce</option>
+            <option value="Lot">Lot</option>
+            <option value="Kg restauration">Kg</option>
           </select>
-          
+
           <label className="text-green-500 font-bold text-sm mt-4">
-            Désignation:
+            Prix de l'unité:
           </label>
           <input
             type="text"
-            value={designation}
+            value={unitPrice}
             onChange={(e) => {
-              setDesignation(e.target.value);
+              setUnitPrice(e.target.value);
             }}
-            placeholder="Désignation"
+            placeholder="Prix de l'unité"
             className="border border-green-500 px-2 py-4 rounded-md mt-4"
           />
+
           <label className="text-green-500 font-bold text-sm mt-4">
             Stock de sécurité:
           </label>
           <input
             type="text"
-            value={securityStock}
+            value={safetyStock}
             onChange={(e) => {
-              setSecurityStock(e.target.value);
+              setSafetyStock(e.target.value);
             }}
             placeholder="Stock de sécurité"
             className="border border-green-500 px-2 py-4 rounded-md mt-4"
@@ -118,12 +148,9 @@ const addProduct = () => {
             }}
             className="border border-green-500 px-2 py-4 rounded-md mt-4"
           >
-            <option value="Admin">Statut</option>
-            <option value="Aide soignant">Aide soignant</option>
-            <option value="Agent restauration">Agent restauration</option>
-            <option value="Responsable approvisionnement">
-              Responsable approvisionnement
-            </option>
+            <option value="Épuisé">Épuisé</option>
+            <option value="Disponible">Disponible</option>
+            <option value="Bientôt épuisé">Bientôt épuisé</option>           
             <option value="None">None</option>
           </select>
           <label className="text-green-500 font-bold text-sm mt-4">
@@ -131,9 +158,9 @@ const addProduct = () => {
           </label>
           <input
             type="date"
-            value={entryDate}
+            value={addedAt}
             onChange={(e) => {
-              setEntryDate(e.target.value);
+              setAddedAt(e.target.value);
             }}
             className="border border-green-500 px-2 py-4 rounded-md mt-4"
           />
@@ -142,10 +169,49 @@ const addProduct = () => {
           </label>
           <input
             type="date"
-            value={expireDate}
+            value={expireAt}
             onChange={(e) => {
-              setExpireDate(e.target.value);
+              setExpireAt(e.target.value);
             }}
+            className="border border-green-500 px-2 py-4 rounded-md mt-4"
+          />
+
+          <label className="text-green-500 font-bold text-sm mt-4">
+            Les commandes annuelles:
+          </label>
+          <input
+            type="text"
+            value={yearlyOrders}
+            onChange={(e) => {
+              setYearlyOrders(e.target.value);
+            }}
+            placeholder="Les commandes annuelles"
+            className="border border-green-500 px-2 py-4 rounded-md mt-4"
+          />
+
+          <label className="text-green-500 font-bold text-sm mt-4">
+            Coût d'approvisionnement:
+          </label>
+          <input
+            type="text"
+            value={costOfProcurement}
+            onChange={(e) => {
+              setCostOfProcurement(e.target.value);
+            }}
+            placeholder="coût d'approvisionnement"
+            className="border border-green-500 px-2 py-4 rounded-md mt-4"
+          />
+
+          <label className="text-green-500 font-bold text-sm mt-4">
+            Coût de possession:
+          </label>
+          <input
+            type="text"
+            value={possessionCost}
+            onChange={(e) => {
+              setPossessionCost(e.target.value);
+            }}
+            placeholder="Coût de possession"
             className="border border-green-500 px-2 py-4 rounded-md mt-4"
           />
 
@@ -157,8 +223,8 @@ const addProduct = () => {
           </button>
         </form>
       </div>
-    </> );
-}
+    </>
+  );
+};
 
- 
 export default withAuth(addProduct);
