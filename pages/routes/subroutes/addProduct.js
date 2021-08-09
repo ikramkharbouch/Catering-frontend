@@ -1,6 +1,8 @@
-import { useState, react } from "react";
+import { useState, useEffect } from "react";
 import withAuth from "../../Auth/withAuth";
 import Navbar from "../../../components/NavBar";
+import SuccessCard from "../../../components/SuccessCard";
+import ErrorCard from "../../../components/ErrorCard";
 
 const addProduct = () => {
   const [productref, setProductRef] = useState("");
@@ -15,9 +17,30 @@ const addProduct = () => {
   const [yearlyOrders, setYearlyOrders] = useState("");
   const [costOfProcurement, setCostOfProcurement] = useState("");
   const [possessionCost, setPossessionCost] = useState("");
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    setError(false);
+    setSuccess(false);
+  }, []);
+
+  const resetValues = () => {
+    setProductRef("");
+    setCategory("");
+    setUnite("");
+    setUnitPrice("");
+    setSafetyStock("");
+    setActualStock("");
+    setStatus("");
+    setExpireAt("");
+    setAddedAt("");
+    setYearlyOrders("");
+    setCostOfProcurement("");
+    setPossessionCost("");
+  };
 
   const submitInfo = async (e) => {
-
     e.preventDefault();
     const data = {
       productref,
@@ -42,17 +65,28 @@ const addProduct = () => {
       body: JSON.stringify(data),
     });
 
-    if (result.status == 200)
-    {
+    if (result.status == 200) {
       console.log("Added Successfully");
+      resetValues();
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(true);
+      }, 3000);
     } else if (result.status == 500) {
       console.log("Something went wrong");
+      resetValues();
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
     }
   };
 
   return (
     <>
       <Navbar />
+      {error && <ErrorCard error="Something went wrong" />}
+      {success && <SuccessCard message="User was added successfully" />}
       <div className="mx-auto w-3/4 mt-10">
         <h1 className="text-2xl font-bold">Ajouter un produit au stock</h1>
         <form onSubmit={submitInfo} className="flex flex-col mx-auto">
@@ -60,6 +94,7 @@ const addProduct = () => {
             Référence du produit
           </label>
           <input
+            required
             type="text"
             value={productref}
             onChange={(e) => {
@@ -81,9 +116,7 @@ const addProduct = () => {
             <option value="Equipement">Equipement</option>
             <option value="Aliment">Aliment</option>
             <option value="Maintenance">Maintenance</option>
-            <option value="Produit hygienique">
-            Produit hygiénique
-            </option>
+            <option value="Produit hygienique">Produit hygiénique</option>
             <option value="None">None</option>
           </select>
           <label className="text-green-500 font-bold text-sm mt-4">
@@ -105,6 +138,7 @@ const addProduct = () => {
             Prix de l'unité:
           </label>
           <input
+            required
             type="text"
             value={unitPrice}
             onChange={(e) => {
@@ -118,6 +152,7 @@ const addProduct = () => {
             Stock de sécurité:
           </label>
           <input
+            required
             type="text"
             value={safetyStock}
             onChange={(e) => {
@@ -130,6 +165,7 @@ const addProduct = () => {
             Stock Actuel:
           </label>
           <input
+            required
             type="text"
             value={actualStock}
             onChange={(e) => {
@@ -150,7 +186,7 @@ const addProduct = () => {
           >
             <option value="Épuisé">Épuisé</option>
             <option value="Disponible">Disponible</option>
-            <option value="Bientôt épuisé">Bientôt épuisé</option>           
+            <option value="Bientôt épuisé">Bientôt épuisé</option>
             <option value="None">None</option>
           </select>
           <label className="text-green-500 font-bold text-sm mt-4">
@@ -180,6 +216,7 @@ const addProduct = () => {
             Les commandes annuelles:
           </label>
           <input
+            required
             type="text"
             value={yearlyOrders}
             onChange={(e) => {
@@ -193,6 +230,7 @@ const addProduct = () => {
             Coût d'approvisionnement:
           </label>
           <input
+            required
             type="text"
             value={costOfProcurement}
             onChange={(e) => {
@@ -206,6 +244,7 @@ const addProduct = () => {
             Coût de possession:
           </label>
           <input
+            required
             type="text"
             value={possessionCost}
             onChange={(e) => {
