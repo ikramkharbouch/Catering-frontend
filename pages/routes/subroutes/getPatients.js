@@ -60,7 +60,7 @@ const getPatients = ({ Patients }) => {
                     {item.gender}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.birthday}
+                    {item.birthday.slice(0, 10)}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
                     {item.roomNumber}
@@ -72,7 +72,7 @@ const getPatients = ({ Patients }) => {
                     {item.disease}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.enterDate}
+                    {item.enterDate.slice(0, 10)}
                   </td>
                   <td className="" onClick={deleteData}>
                     <svg
