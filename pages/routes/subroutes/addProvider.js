@@ -2,7 +2,8 @@ import { React, useState } from "react";
 import ModalBox from "../../../components/ModalBox";
 import Button from "../../../components/Button";
 import withAuth from '../../Auth/withAuth';
-import Navbar from "../../../components/NavBar";
+import dynamic from 'next/dynamic'
+const Navbar = dynamic(() => import("../../../components/NavBar"), { ssr: false }) //<- set SSr to false
 
 const addSupplier = () => {
   const [identifier, setIdentifier] = useState("");

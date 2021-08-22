@@ -1,6 +1,7 @@
 import { useState, React } from "react";
 import withAuth from '../../Auth/withAuth';
-import Navbar from "../../../components/NavBar";
+import dynamic from 'next/dynamic'
+const Navbar = dynamic(() => import("../../../components/NavBar"), { ssr: false }) //<- set SSr to false
 
 const orderProduct = () => {
 

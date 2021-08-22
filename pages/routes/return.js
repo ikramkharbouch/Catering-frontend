@@ -1,6 +1,7 @@
 import withAuth from "../Auth/withAuth";
 import NavCard from "../../components/NavCard";
-import Navbar from "../../components/NavBar";
+import dynamic from 'next/dynamic'
+const Navbar = dynamic(() => import("../../components/NavBar"), { ssr: false }) //<- set SSr to false
 
 const recycle = ({ Returns }) => {
   const List = [

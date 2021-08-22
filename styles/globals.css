@@ -88,7 +88,7 @@ table tr:last-child td:last-child {
     color: #ff0000;
     height: 3rem;
     border-radius: 10px;
-    width: 75%;
+    width: 100%;
 }
 
 .success-card {
@@ -98,11 +98,13 @@ table tr:last-child td:last-child {
     border-radius: 10px;
     width: 75%;
 }
-  
 
 @media only screen and (max-width: 768px) {
     .card {
         width: 80%;
     }
-  }
+    .error-card {
+        width: 100%;
+    }
+}
   

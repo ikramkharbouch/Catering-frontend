@@ -1,5 +1,6 @@
 import withAuth from "../../Auth/withAuth";
-import Navbar from "../../../components/NavBar";
+import dynamic from 'next/dynamic'
+const Navbar = dynamic(() => import("../../../components/NavBar"), { ssr: false }) //<- set SSr to false
 
 const getProducts = ({ StockOrders }) => {
   const deleteData = () => {

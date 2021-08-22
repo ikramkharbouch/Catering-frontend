@@ -1,6 +1,7 @@
 import Button from "../components/Button";
 import Link from "next/link";
-import Navbar from "../components/NavBar";
+import dynamic from 'next/dynamic'
+const Navbar = dynamic(() => import("../components/NavBar"), { ssr: false }) //<- set SSr to false
 
 const error = () => {
   return (

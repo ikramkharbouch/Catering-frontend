@@ -1,8 +1,9 @@
 import { React, useState } from "react";
 import withAuth from "../../Auth/withAuth";
-import Navbar from "../../../components/NavBar";
 import SuccessCard from "../../../components/SuccessCard";
 import ErrorCard from "../../../components/ErrorCard";
+import dynamic from 'next/dynamic'
+const Navbar = dynamic(() => import("../../../components/NavBar"), { ssr: false }) //<- set SSr to false
 
 const addOrder = () => {
   const [ssNumber, setssNumber] = useState("");

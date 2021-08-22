@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import withAuth from "../../Auth/withAuth";
-import Navbar from "../../../components/NavBar";
 import SuccessCard from "../../../components/SuccessCard";
 import ErrorCard from "../../../components/ErrorCard";
+import dynamic from 'next/dynamic'
+const Navbar = dynamic(() => import("../../../components/NavBar"), { ssr: false }) //<- set SSr to false
 
 const addProduct = () => {
   const [productref, setProductRef] = useState("");
@@ -70,7 +71,7 @@ const addProduct = () => {
       resetValues();
       setSuccess(true);
       setTimeout(() => {
-        setSuccess(true);
+        setSuccess(false);
       }, 3000);
     } else if (result.status == 500) {
       console.log("Something went wrong");

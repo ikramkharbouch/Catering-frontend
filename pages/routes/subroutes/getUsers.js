@@ -1,9 +1,12 @@
 import { React, useState, useEffect } from "react";
 import withAuth from "../../Auth/withAuth";
-import Navbar from "../../../components/NavBar";
 import SuccessCard from "../../../components/SuccessCard";
 import ErrorCard  from "../../../components/ErrorCard";
 import Router from "next/router";
+
+import dynamic from 'next/dynamic'
+const Navbar = dynamic(() => import("../../../components/NavBar"), { ssr: false }) //<- set SSr to false
+
 
 const getUsers = ({ Users }) => {
   const [order, setOrder] = useState("");

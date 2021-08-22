@@ -2,7 +2,10 @@ import { React, useState, useEffect } from "react";
 import Button from "../components/Button";
 import Link from "next/link";
 import Dashboard from "./Dashboard";
-import Navbar from "../components/NavBar";
+// import Navbar from "../components/NavBar";
+
+import dynamic from 'next/dynamic'
+const Navbar = dynamic(() => import("../components/NavBar"), { ssr: false }) //<- set SSr to false
 
 export default function Home() {
   
@@ -18,7 +21,7 @@ export default function Home() {
     }
   }, []);
 
-  console.log(loggedIn);
+  
   
   return (
     <>

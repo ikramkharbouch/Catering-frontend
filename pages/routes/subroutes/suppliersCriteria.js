@@ -1,6 +1,7 @@
 import Mark from "../../../components/Mark";
 import withAuth from '../../Auth/withAuth';
-import Navbar from "../../../components/NavBar";
+import dynamic from 'next/dynamic'
+const Navbar = dynamic(() => import("../../../components/NavBar"), { ssr: false }) //<- set SSr to false
 
 const suppliersCriteria = ({ Criteria }) => {
   // Put any states variables here
