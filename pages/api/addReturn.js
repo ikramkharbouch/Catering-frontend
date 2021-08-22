@@ -1,6 +1,7 @@
-export default async function addPatient(req, res) {
+export default async function addReturn(req, res) {
+
     if (req.method === 'POST') {
-        const result = await fetch(process.env.url + "/v1/patients", {
+        const result = await fetch(process.env.url + "/v1/returns", {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -19,4 +20,4 @@ export default async function addPatient(req, res) {
     } else {
       res.status(430).json({ status: "ok" })
     }
-  }
+}

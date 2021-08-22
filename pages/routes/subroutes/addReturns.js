@@ -1,15 +1,17 @@
 import { useState, React } from "react";
-import withAuth from '../../Auth/withAuth';
-import dynamic from 'next/dynamic'
-const Navbar = dynamic(() => import("../../../components/NavBar"), { ssr: false }) //<- set SSr to false
+import withAuth from "../../Auth/withAuth";
+import dynamic from "next/dynamic";
+import Router from 'next/router';
+const Navbar = dynamic(() => import("../../../components/NavBar"), {
+  ssr: false,
+}); //<- set SSr to false
 
 const addReturns = () => {
-  const [mealType, setMealType] = useState("");
-  const [initialWeight, setInitialWeight] = useState("");
-  const [afterWeight, setAfterWeight] = useState("");
-  const [plateCompo, setPlateCompo] = useState("");
-  const [sortMethod, setSortMethod] = useState("");
-  const [recyclingMethod, setRecyclingMethod] = useState("");
+  const [kitchenOrder, setKitchenOrder] = useState("");
+  const [foodWeight, setFoodWeight] = useState("");
+  const [plasticWeight, setPlasticWeight] = useState("");
+  const [cartonPaperWeight, setcartonPaperWeight] = useState("");
+  const [metalWeight, setMetalWeight] = useState("");
 
   const submitUser = async (e) => {
     e.preventDefault();
@@ -17,110 +19,106 @@ const addReturns = () => {
     // send data
     // Fetch the api
     const data = {
-      fullName,
-      email,
-      password,
-      role,
+      kitchenOrder,
+      foodWeight,
+      plasticWeight,
+      cartonPaperWeight,
+      metalWeight,
     };
-    const res = await fetch(process.env.url + "/v1/users", {
+    const res = await fetch("/api/addReturn", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
-    console.log(res);
+
+    if (res.status == 403 || res.status == 500) {
+      console.log("Something went wrong");
+      Router.reload(window.location.pathname);
+    } else if (res.status == 200) {
+      console.log("Added successfully");
+      Router.reload(window.location.pathname);
+    }
   };
 
-  return ( 
+  return (
     <>
-    <Navbar />
-    <div className="mx-auto w-3/4 mt-10">
-      <h1 className="text-2xl font-bold">Retouner un produit</h1>
-      <form onSubmit={submitUser} className="flex flex-col mx-auto">
-        <label className="text-green-500 font-bold text-sm mt-4">
-        Type de repas:
-        </label>
-        <input
-          type="text"
-          value={mealType}
-          onChange={(e) => {
-            setMealType(e.target.value);
-          }}
-          placeholder="Entrez le type du repas"
-          className="border border-green-500 px-2 py-4 rounded-md mt-4"
-        />
-        <label className="text-green-500 font-bold text-sm mt-4">
-        Poids initial:
-        </label>
-        <input
-          type="text"
-          value={initialWeight}
-          onChange={(e) => {
-            setInitialWeight(e.target.value);
-          }}
-          placeholder="Entrez le poids initial"
-          className="border border-green-500 px-2 py-4 rounded-md mt-4"
-        />
-        <label className="text-green-500 font-bold text-sm mt-4">
-        Poids après service:
-        </label>
-        <input
-          type="password"
-          value={afterWeight}
-          onChange={(e) => {
-            setAfterWeight(e.target.value);
-          }}
-          placeholder="Entrez le poids après service"
-          className="border border-green-500 px-2 py-4 rounded-md mt-4"
-        />
-        <label className="text-green-500 font-bold text-sm mt-4">
-        Composition des plateaux:
-        </label>
-        <input
-          type="password"
-          value={plateCompo}
-          onChange={(e) => {
-            setPlateCompo(e.target.value);
-          }}
-          placeholder="Entrez la composition des plateaux"
-          className="border border-green-500 px-2 py-4 rounded-md mt-4"
-        />
-        <label className="text-green-500 font-bold text-sm mt-4">
-        Type de tri prévu:
-        </label>
-        <input
-          type="password"
-          value={sortMethod}
-          onChange={(e) => {
-            setSortMethod(e.target.value);
-          }}
-          placeholder="Entrez le type de tri prévu"
-          className="border border-green-500 px-2 py-4 rounded-md mt-4"
-        />
-        
-        <label className="text-green-500 font-bold text-sm mt-4">
-        Type du recyclage prévu:
-        </label>
-        <input
-          type="password"
-          value={recyclingMethod}
-          onChange={(e) => {
-            setRecyclingMethod(e.target.value);
-          }}
-          placeholder="Entrez le type du recyclage prévu"
-          className="border border-green-500 px-2 py-4 rounded-md mt-4"
-        />
-        
-        
-        <button
-          type="submit"
-          className="bg-green-500 px-2 py-4 rounded-md mt-4 text-white font-bold"
-        >
-          Enregister
-        </button>
-      </form>
-    </div>
+      <Navbar />
+      <div className="mx-auto w-3/4 mt-10">
+        <h1 className="text-2xl font-bold">Retouner un produit</h1>
+        <form onSubmit={submitUser} className="flex flex-col mx-auto">
+          <label className="text-green-500 font-bold text-sm mt-4">
+            Id de l'ordre de la cuisine:
+          </label>
+          <input
+            type="text"
+            value={kitchenOrder}
+            onChange={(e) => {
+              setKitchenOrder(e.target.value);
+            }}
+            placeholder="Entrez l'id de l'ordre de la cuisine"
+            className="border border-green-500 px-2 py-4 rounded-md mt-4"
+          />
+          <label className="text-green-500 font-bold text-sm mt-4">
+            Poids des aliments:
+          </label>
+          <input
+            type="number"
+            value={foodWeight}
+            onChange={(e) => {
+              setFoodWeight(e.target.value);
+            }}
+            placeholder="Entrez le poids des aliments"
+            className="border border-green-500 px-2 py-4 rounded-md mt-4"
+          />
+          <label className="text-green-500 font-bold text-sm mt-4">
+            Poids du plastique:
+          </label>
+          <input
+            type="number"
+            value={plasticWeight}
+            onChange={(e) => {
+              setPlasticWeight(e.target.value);
+            }}
+            placeholder="Entrez le poids du plastique"
+            className="border border-green-500 px-2 py-4 rounded-md mt-4"
+          />
+
+          <label className="text-green-500 font-bold text-sm mt-4">
+            Poids du papier et carton:
+          </label>
+          <input
+            type="number"
+            value={cartonPaperWeight}
+            onChange={(e) => {
+              setcartonPaperWeight(e.target.value);
+            }}
+            placeholder="Entrez le poids du papier et carton"
+            className="border border-green-500 px-2 py-4 rounded-md mt-4"
+          />
+
+          <label className="text-green-500 font-bold text-sm mt-4">
+            Poids du métal:
+          </label>
+          <input
+            type="number"
+            value={metalWeight}
+            onChange={(e) => {
+              setMetalWeight(e.target.value);
+            }}
+            placeholder="Entrez le poids du métal"
+            className="border border-green-500 px-2 py-4 rounded-md mt-4"
+          />
+
+          <button
+            type="submit"
+            className="bg-green-500 px-2 py-4 rounded-md mt-4 text-white font-bold"
+          >
+            Enregister
+          </button>
+        </form>
+      </div>
     </>
   );
 };
