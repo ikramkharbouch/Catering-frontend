@@ -1,10 +1,12 @@
 import { React, useState } from "react";
 import ModalBox from "../../../components/ModalBox";
 import Button from "../../../components/Button";
-import withAuth from '../../Auth/withAuth';
-import dynamic from 'next/dynamic';
-import Router from 'next/router';
-const Navbar = dynamic(() => import("../../../components/NavBar"), { ssr: false }) //<- set SSr to false
+import withAuth from "../../Auth/withAuth";
+import dynamic from "next/dynamic";
+import Router from "next/router";
+const Navbar = dynamic(() => import("../../../components/NavBar"), {
+  ssr: false,
+}); //<- set SSr to false
 
 const addSupplier = () => {
   const [apeCode, setApeCode] = useState("");
@@ -12,7 +14,7 @@ const addSupplier = () => {
   const [representativeName, setRepresentativeName] = useState("");
   const [contact, setContact] = useState("");
   const [email, setEmail] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("Aliments");
   const [specialty, setSpecialty] = useState("");
   const [modal, setModal] = useState(false);
   const [onssa, setOnssa] = useState(false);
@@ -22,15 +24,9 @@ const addSupplier = () => {
   const [conditions, setConditions] = useState(false);
   const [temperatures, setTemperatures] = useState(false);
 
-  const submitInfo = () => {};
-
-  const handleClick = () => {
-    setModal(true);
-  };
-
-  const submitCriteria = async (e) => {
+  const submitInfo = async (e) => {
     e.preventDefault();
-    
+
     // Fetch the api here
     // send data
     // Fetch the api
@@ -47,7 +43,7 @@ const addSupplier = () => {
       price,
       delay,
       conditions,
-      temperatures
+      temperatures,
     };
     const res = await fetch("/api/addProvider", {
       method: "POST",
@@ -59,11 +55,20 @@ const addSupplier = () => {
 
     if (res.status == 403 || res.status == 500) {
       console.log("Something went wrong");
-      Router.reload(window.location.pathname);
+      // Router.reload(window.location.pathname);
     } else if (res.status == 200) {
       console.log("Added successfully");
-      Router.reload(window.location.pathname);
+      // Router.reload(window.location.pathname);
     }
+  };
+
+  const handleClick = () => {
+    setModal(true);
+  };
+
+  const submitCriteria = async (e) => {
+    e.preventDefault();
+    setModal(false);
   };
 
   const handleClose = () => {
@@ -159,47 +164,20 @@ const addSupplier = () => {
 
   return (
     <>
-    <Navbar />
+      <Navbar />
       {modal && (
         <ModalBox
           classnames="visible"
           modal={modal}
           handleClose={handleClose}
           Form={Form}
-        >
-          <form onSubmit={submitCriteria}>
-            <div className="mt-4">
-              <input type="checkbox" id="onssa" name="onssa" />
-              <label className="ml-2">Agrément ONSSA</label>
-            </div>
-            <div className="mt-4">
-              <input type="checkbox" id="iso" name="iso" />
-              <label className="ml-2">Certifications ISO</label>
-            </div>
-            <div className="mt-4">
-              <input type="checkbox" id="price" name="price" />
-              <label className="ml-2">Qualité/Prix</label>
-            </div>
-            <div className="mt-4">
-              <input type="checkbox" id="delay" name="delay" />
-              <label className="ml-2">Respect des délais</label>
-            </div>
-            <div className="mt-4">
-              <input type="checkbox" id="conditions" name="conditions" />
-              <label className="ml-2">Conditionnement</label>
-            </div>
-            <div className="mt-4">
-              <input type="checkbox" id="temperatures" name="temperatures" />
-              <label className="ml-2">Respect des températures</label>
-            </div>
-          </form>
-        </ModalBox>
+        ></ModalBox>
       )}
       <div className="mx-auto w-3/4 mt-10 z-0">
         <h1 className="text-2xl font-bold">Ajouter un fournisseur</h1>
         <form onSubmit={submitInfo} className="flex flex-col">
           <label className="text-green-500 font-bold text-sm mt-4">
-            Identifiant Commercial
+            Code APE
           </label>
           <input
             type="text"
@@ -207,7 +185,7 @@ const addSupplier = () => {
             onChange={(e) => {
               setApeCode(e.target.value);
             }}
-            placeholder="Entrez votre addresse e-mail"
+            placeholder="Code APE"
             className="border border-green-500 px-2 py-4 rounded-md mt-4"
           />
           <label className="text-green-500 font-bold text-sm mt-4">
@@ -269,7 +247,7 @@ const addSupplier = () => {
             className="border border-green-500 px-2 py-4 rounded-md mt-4"
           >
             <option value="Aliments">Aliments</option>
-            <option value="Equipements">Equipements</option>
+            <option value="Equipement">Equipement</option>
           </select>
           <label className="text-green-500 font-bold text-sm mt-4">
             Spécification:
