@@ -2,7 +2,7 @@ import withAuth from '../../Auth/withAuth';
 import dynamic from 'next/dynamic'
 const Navbar = dynamic(() => import("../../../components/NavBar"), { ssr: false }) //<- set SSr to false
 
-const manageSuppliers = ({ Suppliers }) => {
+const manageSuppliers = ({ Providers }) => {
   const deleteData = () => {
     // delete the data
     console.log("deleted");
@@ -45,18 +45,18 @@ const manageSuppliers = ({ Suppliers }) => {
           </thead>
 
           <tbody>
-            {Suppliers.slice(0)
+            {Providers.slice(0)
               .reverse()
               .map((item) => (
                 <tr key={item.IPP} className="text-center border">
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.CI}
+                    {item.apeCode}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.society}
+                    {item.companyName}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.identifier}
+                    {item.representativeName}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
                     {item.contact}
@@ -68,7 +68,7 @@ const manageSuppliers = ({ Suppliers }) => {
                     {item.category}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.specification}
+                    {item.specialty}
                   </td>
                   <td className="" onClick={deleteData}>
                     <svg
@@ -98,14 +98,14 @@ const manageSuppliers = ({ Suppliers }) => {
 // This function gets called at build time
 export async function getStaticProps() {
   // Call an external API endpoint to get posts
-  const res = await fetch("http://localhost:3000/Suppliers");
-  const Suppliers = await res.json();
+  const res = await fetch("http://localhost:3005/api/getProviders");
+  var Providers = await res.json();
 
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {
     props: {
-      Suppliers,
+      Providers,
     },
   };
 }
