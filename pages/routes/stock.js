@@ -12,7 +12,7 @@ const stock = () => {
             subtitle: 'Ajouter des fournisseurs',
             image: '../home-images/catalogue.jpg',
             btn: 'Continuer',
-            link: 'routes/subroutes/addSupplier'
+            link: 'routes/subroutes/addProvider'
         },
         {
             id: 2,

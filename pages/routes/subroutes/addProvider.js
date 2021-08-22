@@ -2,24 +2,25 @@ import { React, useState } from "react";
 import ModalBox from "../../../components/ModalBox";
 import Button from "../../../components/Button";
 import withAuth from '../../Auth/withAuth';
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
+import Router from 'next/router';
 const Navbar = dynamic(() => import("../../../components/NavBar"), { ssr: false }) //<- set SSr to false
 
 const addSupplier = () => {
-  const [identifier, setIdentifier] = useState("");
-  const [society, setSociety] = useState("");
-  const [name, setName] = useState("");
+  const [apeCode, setApeCode] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [representativeName, setRepresentativeName] = useState("");
   const [contact, setContact] = useState("");
   const [email, setEmail] = useState("");
   const [category, setCategory] = useState("");
-  const [specification, setSpecification] = useState("");
+  const [specialty, setSpecialty] = useState("");
   const [modal, setModal] = useState(false);
   const [onssa, setOnssa] = useState(false);
   const [iso, setIso] = useState(false);
-  const [quality, setQuality] = useState(false);
+  const [price, setPrice] = useState(false);
   const [delay, setDelay] = useState(false);
-  const [conditioning, setConditioning] = useState(false);
-  const [temper, setTemper] = useState(false);
+  const [conditions, setConditions] = useState(false);
+  const [temperatures, setTemperatures] = useState(false);
 
   const submitInfo = () => {};
 
@@ -27,10 +28,42 @@ const addSupplier = () => {
     setModal(true);
   };
 
-  const submitCriteria = (e) => {
+  const submitCriteria = async (e) => {
     e.preventDefault();
     
     // Fetch the api here
+    // send data
+    // Fetch the api
+    const data = {
+      apeCode,
+      companyName,
+      representativeName,
+      contact,
+      email,
+      category,
+      specialty,
+      onssa,
+      iso,
+      price,
+      delay,
+      conditions,
+      temperatures
+    };
+    const res = await fetch("/api/addProvider", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (res.status == 403 || res.status == 500) {
+      console.log("Something went wrong");
+      Router.reload(window.location.pathname);
+    } else if (res.status == 200) {
+      console.log("Added successfully");
+      Router.reload(window.location.pathname);
+    }
   };
 
   const handleClose = () => {
@@ -68,11 +101,11 @@ const addSupplier = () => {
           <div className="mt-4">
             <input
               type="checkbox"
-              id="quality"
-              name="quality"
-              defaultChecked={quality}
+              id="price"
+              name="price"
+              defaultChecked={price}
               onChange={(e) => {
-                setQuality(true);
+                setPrice(true);
               }}
             />
             <label className="ml-2">Qualité/Prix</label>
@@ -92,11 +125,11 @@ const addSupplier = () => {
           <div className="mt-4">
             <input
               type="checkbox"
-              id="conditioning"
-              name="conditioning"
-              defaultChecked={conditioning}
+              id="conditions"
+              name="conditions"
+              defaultChecked={conditions}
               onChange={() => {
-                setConditioning(true);
+                setConditions(true);
               }}
             />
             <label className="ml-2">Conditionnement</label>
@@ -104,11 +137,11 @@ const addSupplier = () => {
           <div className="mt-4">
             <input
               type="checkbox"
-              id="temper"
-              name="temper"
-              defaultChecked={temper}
+              id="temperatures"
+              name="temperatures"
+              defaultChecked={temperatures}
               onChange={(e) => {
-                setTemper(true);
+                setTemperatures(true);
               }}
             />
             <label className="ml-2">Respect des températures</label>
@@ -140,23 +173,23 @@ const addSupplier = () => {
               <label className="ml-2">Agrément ONSSA</label>
             </div>
             <div className="mt-4">
-              <input type="checkbox" id="fruits" name="fruits" />
+              <input type="checkbox" id="iso" name="iso" />
               <label className="ml-2">Certifications ISO</label>
             </div>
             <div className="mt-4">
-              <input type="checkbox" id="fruits" name="fruits" />
+              <input type="checkbox" id="price" name="price" />
               <label className="ml-2">Qualité/Prix</label>
             </div>
             <div className="mt-4">
-              <input type="checkbox" id="fruits" name="fruits" />
+              <input type="checkbox" id="delay" name="delay" />
               <label className="ml-2">Respect des délais</label>
             </div>
             <div className="mt-4">
-              <input type="checkbox" id="fruits" name="fruits" />
+              <input type="checkbox" id="conditions" name="conditions" />
               <label className="ml-2">Conditionnement</label>
             </div>
             <div className="mt-4">
-              <input type="checkbox" id="fruits" name="fruits" />
+              <input type="checkbox" id="temperatures" name="temperatures" />
               <label className="ml-2">Respect des températures</label>
             </div>
           </form>
@@ -170,9 +203,9 @@ const addSupplier = () => {
           </label>
           <input
             type="text"
-            value={identifier}
+            value={apeCode}
             onChange={(e) => {
-              setIdentifier(e.target.value);
+              setApeCode(e.target.value);
             }}
             placeholder="Entrez votre addresse e-mail"
             className="border border-green-500 px-2 py-4 rounded-md mt-4"
@@ -182,9 +215,9 @@ const addSupplier = () => {
           </label>
           <input
             type="text"
-            value={society}
+            value={companyName}
             onChange={(e) => {
-              setSociety(e.target.value);
+              setCompanyName(e.target.value);
             }}
             placeholder="Nom de la société"
             className="border border-green-500 px-2 py-4 rounded-md mt-4"
@@ -194,9 +227,9 @@ const addSupplier = () => {
           </label>
           <input
             type="text"
-            value={name}
+            value={representativeName}
             onChange={(e) => {
-              setName(e.target.value);
+              setRepresentativeName(e.target.value);
             }}
             placeholder="Nom du représentant"
             className="border border-green-500 px-2 py-4 rounded-md mt-4"
@@ -235,22 +268,17 @@ const addSupplier = () => {
             }}
             className="border border-green-500 px-2 py-4 rounded-md mt-4"
           >
-            <option value="Admin">Catégorie</option>
-            <option value="Aide soignant">Aide soignant</option>
-            <option value="Agent restauration">Agent restauration</option>
-            <option value="Responsable approvisionnement">
-              Responsable approvisionnement
-            </option>
-            <option value="None">None</option>
+            <option value="Aliments">Aliments</option>
+            <option value="Equipements">Equipements</option>
           </select>
           <label className="text-green-500 font-bold text-sm mt-4">
             Spécification:
           </label>
           <input
             type="text"
-            value={specification}
+            value={specialty}
             onChange={(e) => {
-              setSpecification(e.target.value);
+              setSpecialty(e.target.value);
             }}
             placeholder="Spécification"
             className="border border-green-500 px-2 py-4 rounded-md mt-4"
