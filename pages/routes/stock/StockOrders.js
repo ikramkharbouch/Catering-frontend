@@ -2,7 +2,7 @@ import withAuth from "../../Auth/withAuth";
 import dynamic from 'next/dynamic'
 const Navbar = dynamic(() => import("../../../components/NavBar"), { ssr: false }) //<- set SSr to false
 
-const getProducts = ({ Products }) => {
+const getProducts = ({ StockOrders }) => {
   const deleteData = () => {
     // delete the data
     console.log("deleted");
@@ -104,16 +104,17 @@ const getProducts = ({ Products }) => {
 // This function gets called at build time
 export async function getStaticProps() {
   // Call an external API endpoint to get posts
-  const res = await fetch("http://localhost:3005/api/getProducts");
-  var Products = await res.json();
+  const res = await fetch("http://localhost:3005/api/getStockOrders");
+  var StockOrders = await res.json();
 
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {
     props: {
-      Products,
+      StockOrders,
     },
   };
 }
+
 
 export default withAuth(getProducts);

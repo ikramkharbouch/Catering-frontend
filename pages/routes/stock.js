@@ -44,7 +44,7 @@ const stock = () => {
             subtitle: 'Gérer le stock',
             image: '../home-images/utilisateurs.png',
             btn: 'Continuer',
-            link: 'routes/stock/manageStock'
+            link: 'routes/stock/StockOrders'
         },
         {
             id: 5,
@@ -52,7 +52,7 @@ const stock = () => {
             subtitle: 'Commander des produits pour le stock',
             image: '../home-images/utilisateurs.png',
             btn: 'Continuer',
-            link: 'routes/stock/orderProduct'
+            link: 'routes/stock/StockProducts'
         },
         {
             id: 6,
