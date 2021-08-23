@@ -4,7 +4,8 @@ import { SuccessCard } from '../../../components/SuccessCard';
 import ErrorCard from '../../../components/ErrorCard';
 import Router from 'next/router';
 import dynamic from 'next/dynamic'
-const Navbar = dynamic(() => import("../../../components/NavBar"), { ssr: false }) //<- set SSr to false
+import Navbar from '../../../components/NavBar'
+// const Navbar = dynamic(() => import("../../../components/NavBar"), { ssr: false }) //<- set SSr to false
 
 const addUser = () => {
     const [fullName, setfullName] = useState('');
@@ -14,10 +15,10 @@ const addUser = () => {
     const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
 
-    useEffect(() => {
-        setError(false);
-        setSuccess(false);
-    }, [])
+    // useEffect(() => {
+    //     setError(false);
+    //     setSuccess(false);
+    // }, [])
 
     const submitUser = async (e) => {
         e.preventDefault();
@@ -41,7 +42,7 @@ const addUser = () => {
           } else if (res.status == 200) {
                 console.log("success");
                 setSuccess(true);
-                Router.reload(window.location.pathname);
+                // Router.reload(window.location.pathname);
           }
     }
 

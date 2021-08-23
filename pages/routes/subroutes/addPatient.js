@@ -3,11 +3,11 @@ import withAuth from "../../Auth/withAuth";
 import dynamic from "next/dynamic";
 import { SuccessCard } from "../../../components/SuccessCard";
 import ErrorCard from "../../../components/ErrorCard";
-import Router from 'next/router';
-
-const Navbar = dynamic(() => import("../../../components/NavBar"), {
-  ssr: false,
-}); //<- set SSr to false
+import Router from "next/router";
+import Navbar from "../../../components/NavBar";
+// const Navbar = dynamic(() => import("../../../components/NavBar"), {
+//   ssr: false,
+// }); //<- set SSr to false
 
 const addPatient = () => {
   // Inputs
@@ -33,12 +33,12 @@ const addPatient = () => {
 
   // Error and Success messages
   const [error, setError] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(true);
 
-  useEffect(() => {
-    setError(false);
-    setSuccess(false);
-  }, []);
+  // useEffect(() => {
+  //   setError(false);
+  //   setSuccess(false);
+  // }, []);
 
   const resetValues = () => {
     setssNumber("");
@@ -59,6 +59,14 @@ const addPatient = () => {
     setNuts(false);
     setFruits(false);
   };
+
+  // const Wrapper = () => {
+  //   return success ? (
+  //     <SuccessCard message="something" />
+  //   ) : (
+  //     <ErrorCard error="something" />
+  //   );
+  // };
 
   const submitPatient = async (e) => {
     // send data
@@ -84,7 +92,7 @@ const addPatient = () => {
       fruits,
     };
 
-    console.log(data);
+    // console.log(data);
     const res = await fetch("/api/addPatient", {
       method: "POST",
       headers: {
@@ -93,22 +101,26 @@ const addPatient = () => {
       body: JSON.stringify(data),
     });
 
+    console.log(res.status);
+
     if (res.status == 403 || res.status == 500) {
       console.log("Something went wrong");
-      Router.reload(window.location.pathname);
-      // // resetValues();
-      // setError(true);
-      // setTimeout(() => {
-      //   setError(false);
-      // }, 3000);
+      // Router.reload(window.location.pathname);
+      resetValues();
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
     } else if (res.status == 200) {
-      Router.reload(window.location.pathname);
-      // console.log("Added Successfully");
-      // // resetValues();
-      // setSuccess(true);
-      // setTimeout(() => {
-      //   setSuccess(false);
-      // }, 3000);
+      console.log("entered here");
+      // Router.reload(window.location.pathname);
+      console.log("Added Successfully");
+      resetValues();
+      setSuccess();
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
     }
   };
 
@@ -261,7 +273,7 @@ const addPatient = () => {
               className="checked:bg-green-600 checked:border-transparent"
               onChange={(e) => setSugar(e.target.checked)}
             />
-            <label for="sugar" className="ml-2">
+            <label htmlFor="sugar" className="ml-2">
               Sugar
             </label>
           </div>
@@ -275,7 +287,7 @@ const addPatient = () => {
               name="eggs"
               onChange={(e) => setEggs(e.target.checked)}
             />
-            <label for="eggs" className="ml-2">
+            <label htmlFor="eggs" className="ml-2">
               Eggs
             </label>
           </div>
@@ -286,7 +298,7 @@ const addPatient = () => {
               name="milk"
               onChange={(e) => setMilk(e.target.checked)}
             />
-            <label for="milk" className="ml-2">
+            <label htmlFor="milk" className="ml-2">
               Milk
             </label>
           </div>
@@ -297,7 +309,7 @@ const addPatient = () => {
               name="seafood"
               onChange={(e) => setSeaFood(e.target.checked)}
             />
-            <label for="seafood" className="ml-2">
+            <label htmlFor="seafood" className="ml-2">
               Seafood
             </label>
           </div>
@@ -308,7 +320,7 @@ const addPatient = () => {
               name="grain"
               onChange={(e) => setGrain(e.target.checked)}
             />
-            <label for="grain" className="ml-2">
+            <label htmlFor="grain" className="ml-2">
               Grain
             </label>
           </div>
@@ -319,7 +331,7 @@ const addPatient = () => {
               name="nuts"
               onChange={(e) => setNuts(e.target.checked)}
             />
-            <label for="nuts" className="ml-2">
+            <label htmlFor="nuts" className="ml-2">
               Nuts
             </label>
           </div>
@@ -344,6 +356,6 @@ const addPatient = () => {
       </div>
     </>
   );
-};
+}
 
 export default withAuth(addPatient);
