@@ -54,19 +54,19 @@ const manageStock = ({ StockProducts }) => {
               .map((item) => (
                 <tr key={item.id} className="text-center border">
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.ref}
+                    {item.productref}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
                     {item.category}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.unity}
+                    {item.unite}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.designation}
+                    {item._id}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.securityStock}
+                    {item.safetyStock}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
                     {item.actualStock}
@@ -75,10 +75,10 @@ const manageStock = ({ StockProducts }) => {
                     {item.status}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.entryDate}
+                    {item.addedAt.slice(0, 10)}
                   </td>
                   <td className="border border-gray-200 p-5 rounded-md">
-                    {item.expireDate}
+                    {item.expireAt.slice(0, 10)}
                   </td>
                   <td className="" onClick={deleteData}>
                     <svg
@@ -108,8 +108,8 @@ const manageStock = ({ StockProducts }) => {
 // This function gets called at build time
 export async function getStaticProps() {
   // Call an external API endpoint to get posts
-  const res = await fetch("http://localhost:3000/StockProducts");
-  const StockProducts = await res.json();
+  const res = await fetch("http://localhost:3005/api/getProducts");
+  var StockProducts = await res.json();
 
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
