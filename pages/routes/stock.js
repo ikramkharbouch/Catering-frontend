@@ -36,7 +36,7 @@ const stock = () => {
             subtitle: 'Ajouter des produits au stock',
             image: '../home-images/utilisateurs.png',
             btn: 'Continuer',
-            link: 'routes/stock/addProduct'
+            link: 'routes/stock/orderProduct'
         },
         {
             id: 4,
@@ -52,7 +52,7 @@ const stock = () => {
             subtitle: 'Commander des produits pour le stock',
             image: '../home-images/utilisateurs.png',
             btn: 'Continuer',
-            link: 'routes/stock/StockProducts'
+            link: 'routes/stock/addProduct'
         },
         {
             id: 6,
@@ -60,7 +60,7 @@ const stock = () => {
             subtitle: 'Lister et gérer les produits commandées pour le stock',
             image: '../home-images/utilisateurs.png',
             btn: 'Continuer',
-            link: 'routes/stock/getProducts'
+            link: 'routes/stock/StockProducts'
         }
     ]
     return ( <>
