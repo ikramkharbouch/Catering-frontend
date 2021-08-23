@@ -12,7 +12,7 @@ const stock = () => {
             subtitle: 'Ajouter des fournisseurs',
             image: '../home-images/catalogue.jpg',
             btn: 'Continuer',
-            link: 'routes/subroutes/addProvider'
+            link: 'routes/stock/addProvider'
         },
         {
             id: 2,
@@ -20,7 +20,7 @@ const stock = () => {
             subtitle: 'Gérer les fournisseurs',
             image: '../home-images/utilisateurs.png',
             btn: 'Continuer',
-            link: 'routes/subroutes/manageSuppliers'
+            link: 'routes/stock/manageSuppliers'
         },
         // {
         //     id: 3,
@@ -28,7 +28,7 @@ const stock = () => {
         //     subtitle: 'Gérer les critères des fournisseurs',
         //     image: '../home-images/utilisateurs.png',
         //     btn: 'Continuer',
-        //     link: 'routes/subroutes/suppliersCriteria'
+        //     link: 'routes/stock/suppliersCriteria'
         // },
         {
             id: 3,
@@ -36,7 +36,7 @@ const stock = () => {
             subtitle: 'Ajouter des produits au stock',
             image: '../home-images/utilisateurs.png',
             btn: 'Continuer',
-            link: 'routes/subroutes/addProduct'
+            link: 'routes/stock/addProduct'
         },
         {
             id: 4,
@@ -44,7 +44,7 @@ const stock = () => {
             subtitle: 'Gérer le stock',
             image: '../home-images/utilisateurs.png',
             btn: 'Continuer',
-            link: 'routes/subroutes/manageStock'
+            link: 'routes/stock/manageStock'
         },
         {
             id: 5,
@@ -52,7 +52,7 @@ const stock = () => {
             subtitle: 'Commander des produits pour le stock',
             image: '../home-images/utilisateurs.png',
             btn: 'Continuer',
-            link: 'routes/subroutes/orderProduct'
+            link: 'routes/stock/orderProduct'
         },
         {
             id: 6,
@@ -60,7 +60,7 @@ const stock = () => {
             subtitle: 'Lister et gérer les produits commandées pour le stock',
             image: '../home-images/utilisateurs.png',
             btn: 'Continuer',
-            link: 'routes/subroutes/getProducts'
+            link: 'routes/stock/getProducts'
         }
     ]
     return ( <>
