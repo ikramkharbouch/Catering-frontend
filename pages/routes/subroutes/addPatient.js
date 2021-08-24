@@ -35,11 +35,6 @@ const addPatient = () => {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  // useEffect(() => {
-  //   setError(false);
-  //   setSuccess(false);
-  // }, []);
-
   let Message = null;
 
   const resetValues = () => {
@@ -108,6 +103,7 @@ const addPatient = () => {
     if (res.status == 403 || res.status == 500) {
       console.log("Something went wrong");
       // Router.reload(window.location.pathname);
+      window.scrollTo(0,0)
       resetValues();
       setError(true);
       setTimeout(() => {
@@ -115,6 +111,7 @@ const addPatient = () => {
       }, 3000);
     } else if (res.status == 200) {
       console.log("Added Successfully");
+      window.scrollTo(0,0)
       resetValues();
       setSuccess(true);
       setTimeout(() => {
@@ -126,8 +123,8 @@ const addPatient = () => {
   return (
     <>
       <Navbar />
-      {success && <SuccessCard message="error code" />}
-      {error && <ErrorCard error="error code" />}
+      {success && <SuccessCard message="The patient was added successfully" />}
+      {error && <ErrorCard error="Something went wrong, please retry" />}
       {/* {success ? <SuccessCard message="success code" /> : null} */}
       <div className="mx-auto w-3/4 mt-10">
         <h1 className="text-2xl font-bold">Remplir la prise en charge</h1>
@@ -136,6 +133,7 @@ const addPatient = () => {
             Identification sécurité sociale
           </label>
           <input
+          required
             type="text"
             value={ssNumber}
             onChange={(e) => {
@@ -148,6 +146,7 @@ const addPatient = () => {
             Nom Complet
           </label>
           <input
+          required
             type="text"
             value={fullName}
             onChange={(e) => {
@@ -160,6 +159,7 @@ const addPatient = () => {
             Numéro de chambre
           </label>
           <input
+          required
             type="text"
             value={roomNumber}
             onChange={(e) => {
