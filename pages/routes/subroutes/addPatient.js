@@ -56,15 +56,7 @@ const addPatient = () => {
     setNuts(false);
     setFruits(false);
   };
-
-  // const Wrapper = () => {
-  //   return success ? (
-  //     <SuccessCard message="something" />
-  //   ) : (
-  //     <ErrorCard error="something" />
-  //   );
-  // };
-
+  
   const submitPatient = async (e) => {
     // send data
     // Fetch the api
