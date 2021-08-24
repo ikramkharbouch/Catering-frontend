@@ -67,14 +67,14 @@ const addProduct = () => {
     });
 
     if (result.status == 200) {
-      console.log("Added Successfully");
+      window.scrollTo(0, 0);
       resetValues();
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);
       }, 3000);
     } else if (result.status == 500) {
-      console.log("Something went wrong");
+      window.scrollTo(0, 0);
       resetValues();
       setError(true);
       setTimeout(() => {
@@ -87,7 +87,7 @@ const addProduct = () => {
     <>
       <Navbar />
       {error && <ErrorCard error="Something went wrong" />}
-      {success && <SuccessCard message="User was added successfully" />}
+      {success && <SuccessCard message="Product was added successfully" />}
       <div className="mx-auto w-3/4 mt-10">
         <h1 className="text-2xl font-bold">Ajouter un produit au stock</h1>
         <form onSubmit={submitInfo} className="flex flex-col mx-auto">

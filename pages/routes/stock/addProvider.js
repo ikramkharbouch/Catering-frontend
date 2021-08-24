@@ -1,6 +1,5 @@
 import { React, useState } from "react";
 import ModalBox from "../../../components/ModalBox";
-import Button from "../../../components/Button";
 import withAuth from "../../Auth/withAuth";
 import dynamic from "next/dynamic";
 import SuccessCard from "../../../components/SuccessCard";
