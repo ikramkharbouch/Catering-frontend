@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import withAuth from "../../Auth/withAuth";
 import dynamic from "next/dynamic";
-import { SuccessCard } from "../../../components/SuccessCard";
+import SuccessCard from "../../../components/SuccessCard";
 import ErrorCard from "../../../components/ErrorCard";
 import Router from "next/router";
 import Navbar from "../../../components/NavBar";
@@ -33,12 +33,14 @@ const addPatient = () => {
 
   // Error and Success messages
   const [error, setError] = useState(false);
-  const [success, setSuccess] = useState(true);
+  const [success, setSuccess] = useState(false);
 
   // useEffect(() => {
   //   setError(false);
   //   setSuccess(false);
   // }, []);
+
+  let Message = null;
 
   const resetValues = () => {
     setssNumber("");
@@ -112,11 +114,8 @@ const addPatient = () => {
         setError(false);
       }, 3000);
     } else if (res.status == 200) {
-      console.log("entered here");
-      // Router.reload(window.location.pathname);
       console.log("Added Successfully");
       resetValues();
-      setSuccess();
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);
@@ -127,8 +126,9 @@ const addPatient = () => {
   return (
     <>
       <Navbar />
-      {error && <ErrorCard error="Something went wrong" />}
-      {success && <SuccessCard message="User was added successfully" />}
+      {success && <SuccessCard message="error code" />}
+      {error && <ErrorCard error="error code" />}
+      {/* {success ? <SuccessCard message="success code" /> : null} */}
       <div className="mx-auto w-3/4 mt-10">
         <h1 className="text-2xl font-bold">Remplir la prise en charge</h1>
         <form onSubmit={submitPatient} className="flex flex-col mx-auto">
@@ -356,6 +356,6 @@ const addPatient = () => {
       </div>
     </>
   );
-}
+};
 
 export default withAuth(addPatient);
