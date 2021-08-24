@@ -3,7 +3,8 @@ import ModalBox from "../../../components/ModalBox";
 import Button from "../../../components/Button";
 import withAuth from "../../Auth/withAuth";
 import dynamic from "next/dynamic";
-import Router from "next/router";
+import SuccessCard from "../../../components/SuccessCard";
+import ErrorCard from "../../../components/ErrorCard";
 const Navbar = dynamic(() => import("../../../components/NavBar"), {
   ssr: false,
 }); //<- set SSr to false
@@ -23,6 +24,10 @@ const addSupplier = () => {
   const [delay, setDelay] = useState(false);
   const [conditions, setConditions] = useState(false);
   const [temperatures, setTemperatures] = useState(false);
+
+  // error and success msgs
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const submitInfo = async (e) => {
     e.preventDefault();
@@ -55,10 +60,20 @@ const addSupplier = () => {
 
     if (res.status == 403 || res.status == 500) {
       console.log("Something went wrong");
-      // Router.reload(window.location.pathname);
+      window.scrollTo(0, 0);
+      resetValues();
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
     } else if (res.status == 200) {
       console.log("Added successfully");
-      // Router.reload(window.location.pathname);
+      window.scrollTo(0, 0);
+      resetValues();
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
     }
   };
 
@@ -165,6 +180,8 @@ const addSupplier = () => {
   return (
     <>
       <Navbar />
+      {success && <SuccessCard message="Provider was added successfully"/>}
+      {error && <ErrorCard error="Something went wrong"/>}
       {modal && (
         <ModalBox
           classnames="visible"
