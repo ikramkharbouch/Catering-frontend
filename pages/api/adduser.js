@@ -2,7 +2,7 @@ export default async function adduser(req, res) {
     console.log(req.body);
     console.log(process.env.url);
     if (req.method === 'POST') {
-        const result = await fetch(process.env.url + "/v1/users", {
+        const result = await fetch("http://localhost:4000/v1/users", {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

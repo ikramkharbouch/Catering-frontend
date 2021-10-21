@@ -1,6 +1,6 @@
 export default async function addPatient(req, res) {
     if (req.method === 'POST') {
-        const result = await fetch(process.env.url + "/v1/patients", {
+        const result = await fetch("http://localhost:4000/v1/patients", {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

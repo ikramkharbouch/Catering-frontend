@@ -5,6 +5,9 @@ const WithAuth = (WrappedComponent) => {
     if (typeof window !== "undefined") {
       const router = useRouter();
 
+
+      var loggedIn = localStorage.setItem("loggedIn", true);
+
       if (typeof localStorage !== "undefined") {
         var loggedIn = localStorage.getItem("loggedIn");
       } else {

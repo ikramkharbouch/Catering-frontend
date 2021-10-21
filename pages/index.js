@@ -9,7 +9,7 @@ const Navbar = dynamic(() => import("../components/NavBar"), { ssr: false }) //<
 
 export default function Home() {
   
-  const [loggedIn, setLoggedIn] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     if (typeof localStorage !== "undefined") {

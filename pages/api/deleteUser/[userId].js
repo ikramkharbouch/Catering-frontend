@@ -1,10 +1,11 @@
 export default async function deleteUser(req, res) {
 
     const { userId } = req.query;
+
     console.log(userId);
 
      if (req.method === 'DELETE') {
-        var result = await fetch(process.env.url + "/v1/users/" + userId, {
+        var result = await fetch("http://localhost:4000/v1/users/" + userId, {
             method: 'DELETE',
           });
         // result = await result.json();

@@ -1,7 +1,7 @@
 export default async function addReturn(req, res) {
 
     if (req.method === 'POST') {
-        const result = await fetch(process.env.url + "/v1/returns", {
+        const result = await fetch("http://localhost:4000/v1/returns", {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
