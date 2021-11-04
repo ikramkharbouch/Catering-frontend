@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { useContext } from "react";
-import { AuthContext } from "../contexts/AuthContext";
 import ErrorCard from "../components/ErrorCard";
 import Navbar from "../components/NavBar";
+import withoutAuth from './Auth/withoutAuth'
 
 // This page shouldn't be accessed if the user is loggedIn
 const Login = () => {
@@ -18,27 +17,24 @@ const Login = () => {
     e.preventDefault();
     // connect to api to check credentials of user
     const data = { email, password };
-    const result = await fetch("http://localhost:4000/v1/login", {
+    const res = await fetch("http://localhost:5000/v1/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       credentials: "include",
       body: JSON.stringify(data), // body data type must match "Content-Type" header
-    }).then((res) => res.json());
+    })
 
-    if (result.authenticated) {
-      if (typeof window !== "undefined") {
-        localStorage.setItem("loggedIn", true);
-        router.push("/");
-      }
-      // handleAuth();
-      router.push("/");
-    } else {
-      setError("False Credentials, try again.");
-      console.log("here");
-      router.push("/login");
-    }
+    console.log(res.status)
+   if (res.status == 200) {
+     localStorage.setItem("loggedIn", true)
+     console.log("authenticated")
+     router.push("/")
+   } else {
+     console.log(res)
+     setError("False credentials, try again")
+   }
   };
 
   return (
@@ -84,4 +80,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default withoutAuth(Login); 

@@ -7,12 +7,12 @@ const Navbar = dynamic(() => import("../../../components/NavBar"), { ssr: false 
 
 const addProduct = () => {
   const [productref, setProductRef] = useState("");
-  const [category, setCategory] = useState("");
-  const [unite, setUnite] = useState("");
+  const [category, setCategory] = useState("Equipement");
+  const [unite, setUnite] = useState("Pièce");
   const [unitPrice, setUnitPrice] = useState("");
   const [safetyStock, setSafetyStock] = useState("");
   const [actualStock, setActualStock] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("Disponible");
   const [expireAt, setExpireAt] = useState("");
   const [addedAt, setAddedAt] = useState("");
   const [yearlyOrders, setYearlyOrders] = useState("");
