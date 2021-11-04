@@ -6,7 +6,6 @@ import Navbar from "../components/NavBar";
 import WithAuth from "./Auth/withAuth";
 
 const Home = () => {
-
   return (
     <>
       <Navbar />

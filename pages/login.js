@@ -11,13 +11,14 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const { loggedIn, handleAuth } = useContext(AuthContext);
+  // const { loggedIn, handleAuth } = useContext(AuthContext);
 
   const login = async (e) => {
     e.preventDefault();
     // connect to api to check credentials of user
     const data = { email, password };
     const res = await fetch("http://localhost:5000/v1/login", {
+
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,7 +1,7 @@
 export default async function getUsers(req, res) {
     console.log(process.env.url)
     if (req.method === 'GET') {
-        var result = await fetch(process.env.url + "/v1/orders", {
+        var result = await fetch("http://localhost:4000/v1/orders", {
             method: 'GET',
           });
         result = await result.json();

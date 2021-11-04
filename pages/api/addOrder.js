@@ -1,6 +1,6 @@
 export default async function addOrder(req, res) {
     if (req.method == 'POST') {
-        var result = await fetch(process.env.url + "/v1/orders", {
+        var result = await fetch("http://localhost:4000/v1/orders", {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

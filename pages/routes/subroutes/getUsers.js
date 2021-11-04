@@ -31,6 +31,8 @@ const getUsers = ({ Users }) => {
       }
     );
 
+    console.log(deleted.status)
+
     if (deleted.status == 200) {
       setTimeout(() => {
         Router.reload(window.location.pathname);

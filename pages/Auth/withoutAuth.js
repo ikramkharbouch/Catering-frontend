@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-const WithAuth = (WrappedComponent) => {
+const WithoutAuth = (WrappedComponent) => {
   return (props) => {
     if (typeof window !== "undefined") {
       const router = useRouter();
@@ -23,4 +23,4 @@ const WithAuth = (WrappedComponent) => {
   };
 };
 
-export default WithAuth;
+export default WithoutAuth;

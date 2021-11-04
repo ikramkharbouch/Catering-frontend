@@ -1,7 +1,7 @@
 export default async function addProduct(req, res) {
 
     if (req.method === 'POST') {
-        const result = await fetch(process.env.url + "/v1/stock/products", {
+        const result = await fetch("http://localhost:4000/v1/stock/products", {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
